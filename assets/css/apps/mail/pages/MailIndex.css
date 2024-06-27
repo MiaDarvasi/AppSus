@@ -1,0 +1,18 @@
+ /* mail index  */
+
+@import '../cmps/mail-list.css';
+@import '../cmps/nav-bar.css';
+@import '../cmps/mail-details.css';
+@import '../cmps/compose-mail.css';
+
+
+
+
+
+
+.mail-main-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    background-color: var(--mail-main-bg-clr);
+}
+

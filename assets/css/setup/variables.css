@@ -1,0 +1,15 @@
+:root {
+    --main-bg-color: lightblue;
+
+    --grey1: rgb(214, 214, 214);
+    --grey2: rgb(190, 189, 189);
+    --grey3: rgb(176, 175, 175);
+
+
+    --mail-main-bg-clr: #F1F5F9;
+    --mail-clr1: #f2f6fc;
+    --mail-clr2: #C2DBFF;
+    --mail-clr3: #EAEFF7;
+    --mail-clr3: #EAEFF7;
+    --mail-clr4: #FDFDFD;
+}

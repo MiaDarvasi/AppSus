@@ -1,0 +1,57 @@
+.mail-list-container {
+    grid-column: 2;
+}
+
+.mail-list {
+    display: grid;
+    padding-inline: 0.5rem;
+}
+
+.mail-list article {
+    display: flex;
+    gap: 1rem;
+
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: var(--mail-clr4);
+    padding-inline: 1rem;
+    border-block-end: 1px solid var(--grey1);
+}
+
+.mail-list li:hover .mail-date {
+    display: none;
+}
+
+.mail-list .btns-mail-prev {
+    position: relative;
+    top: -50%;
+    left: 80%;
+}
+
+.mail-list article>*:first-child {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.mail-list .mail-body {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.mail-list li {
+    font-size: 0.8rem;
+    font-family: lato-reg;
+    font-weight: bold;
+}
+
+.mail-list .star {
+    color: gold;
+}
+
+.mail-list .btns-mail-prev button:hover {
+    cursor: pointer;
+}

@@ -1,0 +1,24 @@
+header {
+    background: var(--main-bg-color);
+    border-bottom: 2px solid var(--grey1);
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+nav a {
+    margin: .5em;
+}
+
+nav a:active {
+    color: var(--grey1);
+}
+
+nav a.active {
+    color: darkblue;
+    font-weight: bold;
+    text-decoration: overline;
+}

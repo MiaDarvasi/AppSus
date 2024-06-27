@@ -1,0 +1,49 @@
+.nav-bar {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-bar .btn-compose {
+    display: flex;
+    gap: 1rem;
+    max-width: 10rem;
+
+    padding: 1rem;
+    background-color: #C2E7FF;
+    border-radius: 15px;
+    border: none;
+    margin: 0.3rem;
+    font-family: lato-reg;
+    font-size: 1rem;
+    color: rgb(69, 69, 69);
+}
+
+.nav-bar .btn-compose:hover {
+    cursor: pointer;
+}
+
+.nav-bar .btn-compose img {
+    width: 1rem;
+}
+
+.nav-bar .nav-btns {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-bar .nav-btns button {
+    all: unset;
+    display: flex;
+    gap: 1rem;
+
+
+    padding: 1rem;
+    font-family: lato-reg;
+    color: rgb(69, 69, 69);
+}
+
+.nav-bar .nav-btns button img {
+    display: inline;
+    width: 1rem;
+}

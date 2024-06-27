@@ -1,0 +1,31 @@
+.mail-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.mail-details h1 {
+    font-size: 1.7rem;
+}
+
+.mail-details h2 {
+    font-size: 1.4rem;
+}
+
+.mail-details h2 span {
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--grey2);
+    margin-inline-start: 1rem;
+}
+
+.mail-details h2 span::before {
+    content: '<';
+    font-size: 0.8rem;
+}
+
+.mail-details h2 span::after {
+    content: '>';
+    font-size: 0.8rem;
+}
