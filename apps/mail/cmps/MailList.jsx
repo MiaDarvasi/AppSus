@@ -66,6 +66,7 @@ export function MailList() {
             <ul className="mail-list clean-list">
                 {filteredMails.map(mail =>
                     <li key={mail.id}
+                        className={(mail.isRead) ? 'is-read' : ''}
                         onMouseEnter={() => setHoveredItemId(mail.id)}
                         onMouseLeave={() => setHoveredItemId(null)}>
                         <span className='star'

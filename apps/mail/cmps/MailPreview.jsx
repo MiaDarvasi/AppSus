@@ -1,17 +1,18 @@
 
-
-
 export function MailPreview({ mail }) {
 
     const { from, body, subject, createdAt } = mail
+
     const fromUser = from.split('@')[0]
+    const isRead = (mail.isRead) ? 'is-read' : ''
+
     const dateObj = new Date(createdAt)
     const day = dateObj.getDate()
-    const month = dateObj.getMonth() +1
+    const month = dateObj.getMonth() + 1
     const year = dateObj.getFullYear() % 100
     const formatDate = `${day}/${month}/${year}`
 
-    return <article className='mail-prev'>
+    return <article className={`mail-prev ${isRead}`}>
         <section>
             <p className="mail-prev-from">{fromUser}</p>
         </section>
