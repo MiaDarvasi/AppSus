@@ -1,0 +1,231 @@
+
+.note-preview {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    max-width: 300px;
+    padding: 25px;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(45, 86, 201);
+    border-radius: 30px;
+  }
+  
+  .note-preview .note-actions {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    
+  }
+  
+  .note-preview .note-actions button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: #308df0;
+    color: #fff;
+    font-size: 14px;
+  }
+  
+  .note-preview .note-actions button:hover {
+    background-color: #7c91a8;
+  }
+  
+  .note-preview .note-actions button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Specific note types */
+  .note-img,
+  .note-txt,
+  .note-canvas,
+  .note-map,
+  .note-audio,
+  .note-video,
+  .note-todos {
+    flex: 1;
+    /* padding: 10px; */
+    margin-bottom: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    max-width: 300px;
+    /* padding: 25px; */
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(45, 86, 201);
+    border-radius: 30px;
+    
+  }
+  
+  .note-img img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 8px;
+  }
+  
+  .note-img p,
+  .note-txt p,
+  .note-todos h3,
+  .note-todos li {
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .note-video video {
+    width: 300px;
+  }
+  
+  /* Note container grid */
+  .note-container {
+    max-width: 800px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  /* Note card styles */
+  .note-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .note-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Note header styles */
+  .note-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .note-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .note-actions {
+    display: flex;
+    align-items: center;
+  }
+  
+  .note-actions button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 8px;
+    padding: 6px;
+  }
+  
+  .note-actions button:hover {
+    background-color: #f0f0f0;
+    border-radius: 50%;
+  }
+  
+  .note-content {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  
+  /* Color picker styles */
+  .color-picker {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+  }
+  
+  .color-picker label {
+    margin-right: 8px;
+  }
+  
+  .color-option {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 8px;
+  }
+  
+  .note-index-preview{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+  }
+  .note-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.note-actions {
+  display: flex;
+  align-items: center;
+}
+
+.note-actions button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: 8px;
+  padding: 6px;
+}
+
+.note-actions button:hover {
+  background-color: #f0f0f0;
+  border-radius: 50%;
+}
+.note-filter {
+    background: #f1f3f4;
+    width: 692px;
+    height: 48px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    display: block;
+
+  }
+  .note-filter input {
+    border: none;
+    background: #f1f3f4;
+    height: 100%;
+    width: 95%;
+    font-size: 1rem;
+    margin-left: 10px;
+
+  }
+  input:focus {
+    outline: none;
+  }
+  .note-filter span {
+    margin-left: 10px;
+  }
+  
+  .btn-filter{
+    position: relative;
+    /* bottom: 33px; */
+    left: 10%;
+  }
