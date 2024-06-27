@@ -8,7 +8,6 @@ export function NavBar() {
 
     const [compose, setCompose] = useState(null)
 
-
     function onShowCompose() {
         setCompose(true)
     }
@@ -26,9 +25,9 @@ export function NavBar() {
                 <button><img src="/assets/img/inbox.svg" />Inbox</button>
                 <button><img src="/assets/img/star.svg" />Starred</button>
                 <button><img src="/assets/img/send.svg" />Sent</button>
-                <button><img src="/assets/img/trash.svg" />Trash</button>
+                <button><img src="/assets/img/archive.svg" />Archive</button>
             </section>
-            {compose && <ComposeMail />}
+            {compose && <ComposeMail closeCompose={onCloseCompose} compose={compose}/>}
         </div>
     )
 }

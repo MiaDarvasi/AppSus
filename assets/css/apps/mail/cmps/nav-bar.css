@@ -1,7 +1,8 @@
 .nav-bar {
-    position: fixed;
+    /* position: fixed; */
     display: flex;
     flex-direction: column;
+    background-color: var(--mail-main-bg-clr);
 }
 
 .nav-bar .btn-compose {

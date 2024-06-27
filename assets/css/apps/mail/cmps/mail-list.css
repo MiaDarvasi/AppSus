@@ -7,6 +7,14 @@
     padding-inline: 0.5rem;
 }
 
+.mail-list li {
+    display: flex;
+    background-color: var(--mail-clr4);
+    align-items: center;
+    border-block-end: 1px solid var(--grey1);
+    padding-inline-start: 1rem;
+}
+
 .mail-list article {
     display: flex;
     gap: 1rem;
@@ -16,7 +24,11 @@
 
     background-color: var(--mail-clr4);
     padding-inline: 1rem;
-    border-block-end: 1px solid var(--grey1);
+}
+
+.mail-list li:hover {
+    z-index: 1;
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.1);
 }
 
 .mail-list li:hover .mail-date {
@@ -25,8 +37,23 @@
 
 .mail-list .btns-mail-prev {
     position: relative;
-    top: -50%;
-    left: 80%;
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem;
+}
+
+.mail-list .btns-mail-prev button {
+    all: unset;
+    padding: 0.3rem;
+    border-radius: 50%;
+}
+
+.mail-list .btns-mail-prev button:hover {
+    background-color: rgb(229, 228, 228);
+}
+
+.mail-list .btns-mail-prev img {
+    width: 1rem;
 }
 
 .mail-list article>*:first-child {
@@ -44,12 +71,16 @@
 
 .mail-list li {
     font-size: 0.8rem;
-    font-family: lato-reg;
+    font-family: lato-light;
     font-weight: bold;
 }
 
-.mail-list .star {
+.mail-list .star .fa-solid {
     color: gold;
+}
+
+.mail-list .star .fa-regular {
+    color: rgb(166, 166, 166);
 }
 
 .mail-list .btns-mail-prev button:hover {

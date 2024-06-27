@@ -5,19 +5,14 @@ const Router = ReactRouterDOM.HashRouter
 const { Route, Routes, Outlet } = ReactRouterDOM
 
 import { mailService } from '../services/mail.service.js'
-import { MailDetails } from '../pages/MailDetails.jsx'
-import { MailList } from '../cmps/MailList.jsx'
 import { NavBar } from '../cmps/NavBar.jsx'
-import { ComposeMail } from './ComposeMail.jsx'
+import { MailHeader } from '../cmps/MailHeader.jsx'
+
+
 
 
 
 export function MailIndex() {
-
-    // const [mailToSave, setMailToSave] = useState(mailService.getEmptyMail())
-    // const [compose, setCompose] = useState(null)
-
-
 
     const [mails, setMails] = useState([])
 
@@ -50,6 +45,7 @@ export function MailIndex() {
     if (!mails || !mails.length) return <div>Loading...</div>
     return (
         <section className="mail-main-container">
+            <MailHeader />
             <NavBar />
             <Outlet context={{ mails, onRemove: onRemoveMail }} />
             {/* <ComposeMail /> */}

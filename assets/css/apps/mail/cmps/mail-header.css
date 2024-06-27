@@ -1,0 +1,42 @@
+.mail-header {
+    /* position: fixed; */
+    display: grid;
+    grid-column: 1 / span 2;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    background-color: var(--mail-main-bg-clr);
+}
+
+.mail-header .mail-header-logo {
+    display: flex;
+    gap: 0.5rem;
+    align-items: end;
+
+    padding: 1rem;
+    font-family: lato-light;
+    font-size: 1.3rem;
+}
+
+.mail-header .mail-header-logo img {
+    width: 2rem;
+}
+
+.mail-header .mail-header-search {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    background-color: #E2EBF4;
+    border-radius: 10px;
+}
+
+.mail-header .mail-header-search input {
+    border: none;
+    border-radius: 10px;
+    padding: 0.8rem;
+    background-color: #E2EBF4;
+
+}
+
+.mail-header .mail-header-search label {
+    padding: 0.37rem;  
+}

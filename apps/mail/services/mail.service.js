@@ -8,7 +8,6 @@ const loggedUser = {
     fullname: 'Momo Apsus'
 }
 
-var gFilterBy = {}
 _createMails()
 
 export const mailService = {
@@ -16,22 +15,23 @@ export const mailService = {
     get,
     remove,
     save,
-    getEmptyMail
+    getEmptyMail,
+    getDefaultFilter,
+    toggleStarred
 }
 
 function query() {
     return storageService.query(MAIL_KEY)
-    // .then(mails => {
-    //     if (gFilterBy.title) {
-    //         const regex = new RegExp(gFilterBy.title, 'i')
-    //         mails = mails.filter(mail => regex.test(mail.title))
-    //     }
-    //     if (gFilterBy.price) {
-    //         mails = mails.filter(mail => mail.listPrice.amount >= gFilterBy.price)
-    //     }
-
-    //     return mails
-    // })
+        // .then(mails => {
+        //     if (filterBy.isStarred) {
+        //         const regExp = new RegExp(filterBy.isStarred, 'i')
+        //         mails = mails.filter(mail => regExp.test(mail.isStarred))
+        //     }
+        //     // if (filterBy.minPrice) {
+        //     //     books = books.filter(book => book.listPrice.amount >= filterBy.minPrice)
+        //     // }
+        //     return mails
+        // })
 }
 
 function get(mailId) {
@@ -53,7 +53,7 @@ function save(mail) {
 function getEmptyMail(subject = '', body = '', to = '', from = '') {
     return {
         id: '',
-        createdAt: Date.now(),
+        createdAt: (Date.now()),
         subject,
         body,
         isRead: true,
@@ -61,7 +61,22 @@ function getEmptyMail(subject = '', body = '', to = '', from = '') {
         removedAt: null,
         from,
         to,
+        isStarred: false,
     }
+}
+
+function getDefaultFilter(filterBy = { from: '' }) {
+    return { from: filterBy.from }
+}
+
+function toggleStarred(mailId) {
+    storageService.get(MAIL_KEY, mailId)
+        .then(mail => {
+            mail.isStarred = !mail.isStarred;
+            console.log(mail.isStarred)
+            return storageService.put(MAIL_KEY, mail);
+        });
+
 }
 
 
@@ -74,9 +89,10 @@ function _createMails() {
         for (let i = 0; i < 20; i++) {
             const fromIsUser = Math.random() > 0.7
             const toIsUser = !fromIsUser
+            // const createDate = (Date.now() - _getRandNum())
             const mail = {
                 id: utilService.makeId(),
-                createdAt: Date.now(),
+                createdAt: getRandomDate(),
                 subject: _makeSubject(),
                 body: utilService.makeLorem(10),
                 isRead: false,
@@ -92,6 +108,11 @@ function _createMails() {
     }
 }
 
+function getRandomDate() {
+    const minDate = Date.now() - 604800000 * 2
+    const maxDate = Date.now()
+    return utilService.getRandomIntInclusive(minDate, maxDate)
+}
 function _makeSubject() {
     const words = ['Sky', 'Above', 'Port', 'Was', 'the Color', 'Tuned', 'to', 'Dead Channel', 'All', 'Happened', 'Less', 'I', 'Had', 'Story', 'Bit', 'People', 'Generally', 'Happens', 'Cases', 'Time', 'It', 'Was', 'Different', 'It', 'Was', 'Pleasure', 'To', 'Burn']
     const word1 = words[Math.floor(Math.random() * words.length)] + ' '
@@ -100,6 +121,11 @@ function _makeSubject() {
     return word1 + word2
 }
 
+function _getRandNum() {
+    const nums = [1000, 10000, 10000, 1000000, 10000000]
+    const num = nums[Math.floor(Math.random() * nums.length)]
+    return num
+}
 
 function _makeName() {
     var names = ['Bobo', 'Mimi', 'Lala', 'Bebe', 'Riri', 'Tutu', 'Coco', 'Popo', 'Zuzu', 'Sasa']

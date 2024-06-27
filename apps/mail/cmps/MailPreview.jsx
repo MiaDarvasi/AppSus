@@ -1,8 +1,11 @@
-export function MailPreview({ mail, onRemove }) {
 
-    const { from, body, subject, sentAt } = mail
+
+
+export function MailPreview({ mail }) {
+
+    const { from, body, subject, createdAt } = mail
     const fromUser = from.split('@')[0]
-    const dateObj = new Date(sentAt)
+    const dateObj = new Date(createdAt)
     const day = dateObj.getDate()
     const month = dateObj.getMonth() +1
     const year = dateObj.getFullYear() % 100
@@ -10,11 +13,6 @@ export function MailPreview({ mail, onRemove }) {
 
     return <article className='mail-prev'>
         <section>
-            <span
-                className='star'
-            >
-                <i className="fa-solid fa-star"></i>
-            </span>
             <p>{fromUser}</p>
         </section>
         <section>
