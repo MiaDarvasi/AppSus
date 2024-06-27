@@ -3,13 +3,21 @@ import { storageService } from '../../../services/async-storage.service.js';
 
 const NOTES_KEY = 'notes';
 
+function getDefaultFilter(filterBy = { title: '', type: 'all' }) {
+  return {
+    title: filterBy.title || '',
+    type: filterBy.type || 'all',
+  };
+}
+
 export const noteService = {
   query,
   get,
   post,
   put,
   remove,
-  initializeNotes
+  initializeNotes,
+  getDefaultFilter,
 };
 
 async function query() {
@@ -31,7 +39,6 @@ async function put(updatedNote) {
 async function remove(noteId) {
   return storageService.remove(NOTES_KEY, noteId);
 }
-
 export async function initializeNotes() {
   const notes = [
     {
@@ -40,7 +47,7 @@ export async function initializeNotes() {
       type: 'NoteTxt',
       isPinned: true,
       style: {
-        backgroundColor: '#00d'
+        backgroundColor: '#eef3C0'
       },
       info: {
         txt: 'Fullstack Me Baby!'
@@ -56,7 +63,7 @@ export async function initializeNotes() {
         title: 'Bobi and Me'
       },
       style: {
-        backgroundColor: '#00d'
+        backgroundColor: '#fff'
       }
     },
     {
@@ -86,17 +93,59 @@ export async function initializeNotes() {
       }
     },
     {
-      id: 'n10',
+      id: 'n105',
       createdAt: 1112222,
-      type: 'NoteTxt',
+      type: 'NoteVideo',
       isPinned: true,
       style: {
-        backgroundColor: '#00d'
+        backgroundColor: '#1BE3C0'
       },
       info: {
-        txt: 'shlomi plis!'
+        videoUrl: 'https://www.youtube.com/watch?v=8STxzM7aFa0',
+        title: 'Video Title',
+        autoplay: true,
+        loop: true
+      },
+    },
+    {
+      id: 'n106',
+      createdAt: 1112225,
+      type: 'NoteAudio',
+      isPinned: false,
+      info: {
+        url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+        title: 'Sample Audio'
+      },
+      style: {
+        backgroundColor: '#00d'
       }
     },
+    {
+      id: 'n107',
+      createdAt: 1112226,
+      type: 'NoteCanvas',
+      isPinned: false,
+      info: {
+        title: 'Canvas Note',
+        canvasData: null 
+      },
+      style: {
+        backgroundColor: '#f0f0f0'
+      }
+    },{
+      id: 'n108',
+      createdAt: 1112226,
+      type: 'NoteMap',
+      isPinned: false,
+      info: {
+        title: 'Sample Map',
+        location: 'New York, NY'
+      },
+      style: {
+        backgroundColor: '#00d'
+      }
+    }
+
   ];
 
   // localStorage.setItem(NOTES_KEY, JSON.stringify(notes));

@@ -1,9 +1,9 @@
 const { useState } = React
 
-export const BookFilter = ({ filterBy }) => {
+export const NoteFilter = ({ filterBy, clearFilters }) => {
     const [filter, setFilter] = useState({
-        title: '',
-        
+        searchText: '',
+        type: 'all' 
     })
 
     const handleChange = (event) => {
@@ -16,16 +16,27 @@ export const BookFilter = ({ filterBy }) => {
         filterBy(filter)
     }
 
+    const handleClearFilters = () => {
+        setFilter({
+            searchText: '',
+            type: 'all'
+        })
+        clearFilters()
+    }
+
     return (
-        <form onChange={handleSubmit} className="book-filter">
-            <input
-                type="text"
-                name="title"
-                value={filter.title}
-                onChange={handleChange}
-                placeholder="Search by Title"
-            />
-            <button type="submit">Filter</button>
-        </form>
+        <div>
+            <form onChange={handleSubmit} className="note-filter">
+                <input
+                    type="text"
+                    name="searchText"
+                    value={filter.searchText}
+                    onChange={handleChange}
+                    placeholder="Search by Title or Text"
+                />
+                {/* <button type="submit">Filter</button> */}
+            </form>
+            <button className="btn-filter" onClick={handleClearFilters}>X</button>
+        </div>
     )
 }
