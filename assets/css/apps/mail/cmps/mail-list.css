@@ -1,11 +1,39 @@
 .mail-list-container {
     grid-column: 2;
+    padding-inline: 0.5rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    overflow: hidden;
 }
+
+
+/* NAV */
+
+.mail-list-container .mail-list-nav {
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem;
+    background-color: var(--mail-clr4);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.mail-list-container .mail-list-nav select {
+    padding: 0.2rem;
+    border: 1px solid rgb(219, 218, 218);
+    border-radius: 20px;
+    color: rgb(71, 71, 71);
+}
+
+
+/* LIST */
 
 .mail-list {
     display: grid;
-    padding-inline: 0.5rem;
+    margin-bottom: 1rem;
+    width: 100%;
 }
+
 
 .mail-list li {
     display: flex;
@@ -13,6 +41,12 @@
     align-items: center;
     border-block-end: 1px solid var(--grey1);
     padding-inline-start: 1rem;
+    
+}
+
+.mail-list li:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .mail-list article {
@@ -22,6 +56,7 @@
     justify-content: space-between;
     align-items: center;
 
+    
     background-color: var(--mail-clr4);
     padding-inline: 1rem;
 }
@@ -31,7 +66,7 @@
     box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.1);
 }
 
-.mail-list li:hover .mail-date {
+.mail-list li:hover .mail-prev-date {
     display: none;
 }
 
@@ -39,7 +74,7 @@
     position: relative;
     display: flex;
     gap: 0.5rem;
-    margin: 1rem;
+    margin-inline: 1rem;
 }
 
 .mail-list .btns-mail-prev button {
@@ -53,7 +88,7 @@
 }
 
 .mail-list .btns-mail-prev img {
-    width: 1rem;
+    width: 0.7rem;
 }
 
 .mail-list article>*:first-child {
@@ -62,11 +97,23 @@
     align-items: center;
 }
 
-.mail-list .mail-body {
+.mail-list .mail-prev-body {
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    padding: 0;
+    margin: 0.1rem;
+}
+
+.mail-list .mail-prev-subject {
+    font-family: lato-reg;
+    padding: 0;
+    margin: 0.1rem;
+}
+
+.mail-list .mail-prev-from {
+    font-family: lato-reg;
 }
 
 .mail-list li {

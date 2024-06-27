@@ -5,13 +5,24 @@ const { Link, useOutletContext } = ReactRouterDOM
 const { useState } = React
 
 export function MailList() {
-    const { mails, onRemove } = useOutletContext()
+    const { mails, setMails, onRemove } = useOutletContext()
     const [hoveredItemId, setHoveredItemId] = useState(null)
     const [sortBy, setSortBy] = useState('latest')
     const [filterType, setFilterType] = useState('all')
 
     function onToggleStarred(mailId) {
         mailService.toggleStarred(mailId)
+        const updatedMails = mails.map(mail => {
+            if (mail.id === mailId) {
+                return { ...mail, isStarred: !mail.isStarred }
+            }
+            return mail
+        })
+        setMails(updatedMails)
+    }
+
+    function onSetArchive(mailId) {
+        mailService.setArchive(mailId)
     }
 
     function handleChangeSortBy(event) {
@@ -24,7 +35,7 @@ export function MailList() {
 
     function getFilteredMails() {
 
-        let sortedMails = [...mails];
+        let sortedMails = [...mails]
         if (sortBy === 'latest') {
             sortedMails.sort((a, b) => b.createdAt - a.createdAt)
         } else {
@@ -63,13 +74,13 @@ export function MailList() {
                                 <i className="fa-solid fa-star"></i> :
                                 <i className="fa-regular fa-star"></i>}
                         </span>
-                        <Link to={`/mail/${mail.id}`}>
+                        <Link to={`/mail/details/${mail.id}`}>
                             <MailPreview mail={mail} onRemove={onRemove} />
                         </Link>
                         {hoveredItemId === mail.id && (
                             <section className="btns-mail-prev">
                                 <button onClick={() => onRemove(mail.id)}><img src="/assets/img/trash.svg" /></button>
-                                <button ><img src="/assets/img/archive.svg" /></button>
+                                <button onClick={() => onSetArchive(mail.id)}><img src="/assets/img/archive.svg" /></button>
                             </section>)}
                     </li>
                 )}

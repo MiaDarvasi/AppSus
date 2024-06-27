@@ -17,21 +17,12 @@ export const mailService = {
     save,
     getEmptyMail,
     getDefaultFilter,
-    toggleStarred
+    toggleStarred,
+    setArchive,
 }
 
 function query() {
     return storageService.query(MAIL_KEY)
-        // .then(mails => {
-        //     if (filterBy.isStarred) {
-        //         const regExp = new RegExp(filterBy.isStarred, 'i')
-        //         mails = mails.filter(mail => regExp.test(mail.isStarred))
-        //     }
-        //     // if (filterBy.minPrice) {
-        //     //     books = books.filter(book => book.listPrice.amount >= filterBy.minPrice)
-        //     // }
-        //     return mails
-        // })
 }
 
 function get(mailId) {
@@ -62,6 +53,7 @@ function getEmptyMail(subject = '', body = '', to = '', from = '') {
         from,
         to,
         isStarred: false,
+        isArchive: false,
     }
 }
 
@@ -72,11 +64,18 @@ function getDefaultFilter(filterBy = { from: '' }) {
 function toggleStarred(mailId) {
     storageService.get(MAIL_KEY, mailId)
         .then(mail => {
-            mail.isStarred = !mail.isStarred;
-            console.log(mail.isStarred)
-            return storageService.put(MAIL_KEY, mail);
+            mail.isStarred = !mail.isStarred
+            return storageService.put(MAIL_KEY, mail)
         });
 
+}
+
+function setArchive(mailId) {
+    storageService.get(MAIL_KEY, mailId)
+        .then(mail => {
+            mail.isArchive = true
+            return storageService.put(MAIL_KEY, mail);
+        });
 }
 
 
@@ -89,17 +88,18 @@ function _createMails() {
         for (let i = 0; i < 20; i++) {
             const fromIsUser = Math.random() > 0.7
             const toIsUser = !fromIsUser
-            // const createDate = (Date.now() - _getRandNum())
             const mail = {
                 id: utilService.makeId(),
-                createdAt: getRandomDate(),
+                createdAt: _getRandomDate(),
                 subject: _makeSubject(),
-                body: utilService.makeLorem(10),
-                isRead: false,
+                body: utilService.makeLorem(20),
                 sentAt: Date.now(),
                 removedAt: null,
                 from: fromIsUser ? 'Momo@appsus.com' : `${_makeName()}@appsus.com`,
-                to: toIsUser ? 'Momo@appsus.com' : `${_makeName()}@appsus.com`
+                to: toIsUser ? 'Momo@appsus.com' : `${_makeName()}@appsus.com`,
+                isStarred: Math.random() > 0.7,
+                isRead: Math.random() < 0.7,
+                isArchive: false,
             }
             mails.push(mail)
         }
@@ -108,7 +108,7 @@ function _createMails() {
     }
 }
 
-function getRandomDate() {
+function _getRandomDate() {
     const minDate = Date.now() - 604800000 * 2
     const maxDate = Date.now()
     return utilService.getRandomIntInclusive(minDate, maxDate)
@@ -119,12 +119,6 @@ function _makeSubject() {
     const word2 = words[Math.floor(Math.random() * words.length)]
 
     return word1 + word2
-}
-
-function _getRandNum() {
-    const nums = [1000, 10000, 10000, 1000000, 10000000]
-    const num = nums[Math.floor(Math.random() * nums.length)]
-    return num
 }
 
 function _makeName() {

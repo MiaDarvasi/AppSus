@@ -46,8 +46,8 @@ export function MailIndex() {
     return (
         <section className="mail-main-container">
             <MailHeader />
-            <NavBar />
-            <Outlet context={{ mails, onRemove: onRemoveMail }} />
+            <NavBar mails={mails} setMails={setMails}/>
+            <Outlet context={{ mails, setMails, onRemove: onRemoveMail }} />
             {/* <ComposeMail /> */}
         </section>
     )

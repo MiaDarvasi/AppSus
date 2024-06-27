@@ -5,7 +5,7 @@ import { mailService } from "../services/mail.service.js"
 import { TextboxRating } from "../cmps/TextboxRating.jsx"
 
 
-export function ComposeMail({ closeCompose, compose }) {
+export function ComposeMail({ closeCompose, compose, mails, setMails }) {
 
     const [mailToAdd, setMailToAdd] = useState(mailService.getEmptyMail())
     const { mailId } = useParams()
@@ -33,8 +33,13 @@ export function ComposeMail({ closeCompose, compose }) {
             !mailToAdd.body) return
 
         mailService.save(mailToAdd)
-            .then(() => closeCompose())
-            .catch(err => console.log('err:', err))
+            .then(() => {
+                closeCompose()
+                mailService.query()
+                    .then(updatedMails => setMails(updatedMails))
+                    .catch(err => console.log('Error fetching updated mails:', err))
+            })
+            .catch(err => console.log('Error saving mail:', err))
     }
 
     function onBack() {

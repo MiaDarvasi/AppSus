@@ -58,6 +58,8 @@
 }
 
 .compose-mail form input {
+    all: unset;
+
     padding: 0.8rem;
     background-color: var(--mail-clr4);
 

@@ -1,9 +1,11 @@
 .mail-header {
-    /* position: fixed; */
+    position: sticky;
+    top: 0;
     display: grid;
     grid-column: 1 / span 2;
     grid-template-columns: 1fr 2fr;
     align-items: center;
+    padding-inline: 1rem;
     background-color: var(--mail-main-bg-clr);
 }
 
@@ -13,6 +15,7 @@
     align-items: end;
 
     padding: 1rem;
+    padding-inline-start: 0.5rem;
     font-family: lato-light;
     font-size: 1.3rem;
 }
@@ -27,6 +30,7 @@
     width: 80%;
     background-color: #E2EBF4;
     border-radius: 10px;
+    margin: 1rem;
 }
 
 .mail-header .mail-header-search input {
@@ -38,5 +42,11 @@
 }
 
 .mail-header .mail-header-search label {
-    padding: 0.37rem;  
+    display: flex;
+    align-items: center;
+    padding: 0.37rem; 
+}
+
+.mail-header .mail-header-search label img {
+    width: 1.2rem;
 }

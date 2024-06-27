@@ -13,13 +13,13 @@ export function MailPreview({ mail }) {
 
     return <article className='mail-prev'>
         <section>
-            <p>{fromUser}</p>
+            <p className="mail-prev-from">{fromUser}</p>
         </section>
-        <section>
-            <p>{subject}</p>
-            <p className="mail-body">{body}</p>
+        <section className="mail-prev-content">
+            <p className="mail-prev-subject">{subject}</p>
+            <p className="mail-prev-body">{body}</p>
         </section>
-        <p className="mail-date">{formatDate}</p>
+        <p className="mail-prev-date">{formatDate}</p>
     </article>
 
 }
