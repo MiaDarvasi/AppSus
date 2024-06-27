@@ -1,14 +1,15 @@
 const { useState, useEffect } = React
-const { useParams } = ReactRouterDOM
+const { useNavigate, useParams } = ReactRouterDOM
 
 import { mailService } from "../services/mail.service.js"
 import { TextboxRating } from "../cmps/TextboxRating.jsx"
 
 
-export function ComposeMail({ closeCompose, compose, mails, setMails }) {
+export function ComposeMail() {
 
     const [mailToAdd, setMailToAdd] = useState(mailService.getEmptyMail())
     const { mailId } = useParams()
+    const [compose, setCompose] = useState(true)
 
     useEffect(() => {
         if (mailId) loadMail()
@@ -27,23 +28,13 @@ export function ComposeMail({ closeCompose, compose, mails, setMails }) {
 
     function onSaveMail(ev) {
         ev.preventDefault()
-        if (!mailToAdd.from ||
-            !mailToAdd.to ||
-            !mailToAdd.subject ||
-            !mailToAdd.body) return
-
         mailService.save(mailToAdd)
-            .then(() => {
-                closeCompose()
-                mailService.query()
-                    .then(updatedMails => setMails(updatedMails))
-                    .catch(err => console.log('Error fetching updated mails:', err))
-            })
-            .catch(err => console.log('Error saving mail:', err))
+            .then(() => setCompose(null))
+            .catch(err => console.log('err:', err))
     }
 
     function onBack() {
-        closeCompose()
+        setCompose(null)
     }
 
 

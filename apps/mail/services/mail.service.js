@@ -8,6 +8,7 @@ const loggedUser = {
     fullname: 'Momo Apsus'
 }
 
+var gFilterBy = {}
 _createMails()
 
 export const mailService = {
@@ -15,14 +16,22 @@ export const mailService = {
     get,
     remove,
     save,
-    getEmptyMail,
-    getDefaultFilter,
-    toggleStarred,
-    setArchive,
+    getEmptyMail
 }
 
 function query() {
     return storageService.query(MAIL_KEY)
+    // .then(mails => {
+    //     if (gFilterBy.title) {
+    //         const regex = new RegExp(gFilterBy.title, 'i')
+    //         mails = mails.filter(mail => regex.test(mail.title))
+    //     }
+    //     if (gFilterBy.price) {
+    //         mails = mails.filter(mail => mail.listPrice.amount >= gFilterBy.price)
+    //     }
+
+    //     return mails
+    // })
 }
 
 function get(mailId) {
@@ -44,7 +53,7 @@ function save(mail) {
 function getEmptyMail(subject = '', body = '', to = '', from = '') {
     return {
         id: '',
-        createdAt: (Date.now()),
+        createdAt: Date.now(),
         subject,
         body,
         isRead: true,
@@ -52,30 +61,7 @@ function getEmptyMail(subject = '', body = '', to = '', from = '') {
         removedAt: null,
         from,
         to,
-        isStarred: false,
-        isArchive: false,
     }
-}
-
-function getDefaultFilter(filterBy = { from: '' }) {
-    return { from: filterBy.from }
-}
-
-function toggleStarred(mailId) {
-    storageService.get(MAIL_KEY, mailId)
-        .then(mail => {
-            mail.isStarred = !mail.isStarred
-            return storageService.put(MAIL_KEY, mail)
-        });
-
-}
-
-function setArchive(mailId) {
-    storageService.get(MAIL_KEY, mailId)
-        .then(mail => {
-            mail.isArchive = true
-            return storageService.put(MAIL_KEY, mail);
-        });
 }
 
 
@@ -90,16 +76,14 @@ function _createMails() {
             const toIsUser = !fromIsUser
             const mail = {
                 id: utilService.makeId(),
-                createdAt: _getRandomDate(),
+                createdAt: Date.now(),
                 subject: _makeSubject(),
-                body: utilService.makeLorem(20),
+                body: utilService.makeLorem(10),
+                isRead: false,
                 sentAt: Date.now(),
                 removedAt: null,
                 from: fromIsUser ? 'Momo@appsus.com' : `${_makeName()}@appsus.com`,
-                to: toIsUser ? 'Momo@appsus.com' : `${_makeName()}@appsus.com`,
-                isStarred: Math.random() > 0.7,
-                isRead: Math.random() < 0.7,
-                isArchive: false,
+                to: toIsUser ? 'Momo@appsus.com' : `${_makeName()}@appsus.com`
             }
             mails.push(mail)
         }
@@ -108,11 +92,6 @@ function _createMails() {
     }
 }
 
-function _getRandomDate() {
-    const minDate = Date.now() - 604800000 * 2
-    const maxDate = Date.now()
-    return utilService.getRandomIntInclusive(minDate, maxDate)
-}
 function _makeSubject() {
     const words = ['Sky', 'Above', 'Port', 'Was', 'the Color', 'Tuned', 'to', 'Dead Channel', 'All', 'Happened', 'Less', 'I', 'Had', 'Story', 'Bit', 'People', 'Generally', 'Happens', 'Cases', 'Time', 'It', 'Was', 'Different', 'It', 'Was', 'Pleasure', 'To', 'Burn']
     const word1 = words[Math.floor(Math.random() * words.length)] + ' '
@@ -120,6 +99,7 @@ function _makeSubject() {
 
     return word1 + word2
 }
+
 
 function _makeName() {
     var names = ['Bobo', 'Mimi', 'Lala', 'Bebe', 'Riri', 'Tutu', 'Coco', 'Popo', 'Zuzu', 'Sasa']

@@ -1,12 +1,12 @@
 import { NoteTxt } from '../cmps/NoteTxt.jsx'
 import { NoteTodos } from '../cmps/NoteTodos.jsx'
 import { NoteImg } from '../cmps/NoteImg.jsx'
-import { ColorInput } from './ColorInput.jsx'
 import { NoteVideo } from './NoteVideo.jsx'
 import { NoteAudio } from './NoteAudio.jsx'
 import { NoteCanvas } from './NoteCanvas.jsx'
 import { NoteMap } from './NoteMap.jsx'
-const { useState } = React
+
+const { useState,useRef  } = React
 
 const componentMap = {
   NoteTxt: NoteTxt,
@@ -15,10 +15,10 @@ const componentMap = {
   NoteVideo: NoteVideo,
   NoteAudio: NoteAudio,
   NoteCanvas: NoteCanvas,
-  NoteMap: NoteMap
+  NoteMap: NoteMap,
 }
 
-export function NotePreview({ note, updateNoteColor, toggleNotePinned, deleteNote, duplicateNote,onEditNote  }) {
+export function NotePreview({ note, updateNoteColor, toggleNotePinned, deleteNote, duplicateNote }) {
 
   const NoteComponent = componentMap[note.type]
   const [selectedColor, setSelectedColor] = useState('#1BE3C0')
@@ -27,10 +27,12 @@ export function NotePreview({ note, updateNoteColor, toggleNotePinned, deleteNot
   if (!NoteComponent) {
     return null
   }
+  const colorPickerRef = useRef(null)
 
   const handleColorChange = () => {
-    updateNoteColor(note.id, selectedColor)
-  }
+    if (colorPickerRef.current) {
+      colorPickerRef.current.click();
+    }  }
 
   const handlePinToggle = () => {
     toggleNotePinned(note.id)
@@ -47,18 +49,23 @@ export function NotePreview({ note, updateNoteColor, toggleNotePinned, deleteNot
     <div className="note-preview" >
       <NoteComponent {...note.info} style={note.style} />
       <div className="note-actions">
-      <input
-          type="color"
-          value={selectedColor}
-          onChange={(e) => setSelectedColor(e.target.value)}
-        />
-        <button onClick={handleColorChange}>Change Color</button>
+      <div className="color-picker-container">
+    <input
+      ref={colorPickerRef}
+      type="color"
+      value={selectedColor}
+      onChange={(e) => setSelectedColor(e.target.value)}
+      style={{ display: 'none' }}
+    />
+    <button onClick={handleColorChange}>
+      <img src="assets/img/color-wheel.png" alt="Color Wheel" />
+    </button>
+  </div>
         <button onClick={() => toggleNotePinned(note.id)}>
-          {note.isPinned ? 'Unpin' : 'Pin'}
+          {note.isPinned ? <img src="assets/img/pin (1).png" /> : <img src="assets/img/pin.png" />}
         </button>
-        {/* <button onClick={handlePinToggle}>{note.isPinned ? 'Unpin' : 'Pin'}</button> */}
-        <button onClick={handleDelete}>Delete</button>
-        <button onClick={handleDuplicate}>Copy</button>
+        <button onClick={handleDelete}><img src="assets/img/trash-solid.svg" /></button>
+        <button onClick={handleDuplicate}><img src="assets/img/copy-regular (1).svg" /></button>
       </div>
     </div>
   )
