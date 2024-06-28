@@ -1,0 +1,38 @@
+.note-filter input {
+    border: none;
+    background: #f1f3f4;
+    font-size: 1rem;
+    width: 450px;
+    height: 47px;
+    border-radius: 8px;
+    position: absolute;
+    left: 26%;
+    top: 69px;
+    display: block;
+  }
+  
+  .btn-filter {
+    border: none;
+    background: #f1f3f4;
+    font-size: 14px;
+    position: absolute;
+    left: 879px;
+    top: 84px;
+  }
+  
+  .filter {
+    width: 0px;
+    height: 0px;
+  }
+  .filter-icon {
+    position: absolute;
+    background: #f1f3f4;
+    top: 76px;
+    display: block;
+    left: 905px;
+    border-radius: 8px;
+  }
+  .filter-icon img {
+    height: 32px;
+  }
+  

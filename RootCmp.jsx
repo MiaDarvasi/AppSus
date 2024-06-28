@@ -1,4 +1,4 @@
-const { Route, Routes } = ReactRouterDOM
+const { Route, Routes, } = ReactRouterDOM
 const Router = ReactRouterDOM.HashRouter
 
 import { AppHeader } from "./cmps/AppHeader.jsx"
@@ -11,8 +11,8 @@ import { MailList } from "./apps/mail/cmps/MailList.jsx"
 
 
 
-
 export function App() {
+
     return <Router>
         <section className="app">
             <AppHeader />

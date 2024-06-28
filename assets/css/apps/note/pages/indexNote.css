@@ -1,0 +1,22 @@
+.note-index {
+  overflow: hidden;
+  display: grid;
+}
+
+
+.note-list {
+  margin: 20px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-inline-start: 500px;
+}
+.note-list .note-video{
+ /* height: 100px; */
+ margin: 0;
+ padding: 0;
+ height: 0;
+ width: 0px;
+}
+
