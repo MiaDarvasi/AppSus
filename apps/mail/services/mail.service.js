@@ -60,6 +60,7 @@ export function getFilteredMails(filterType = 'inbox') {
                 filteredMails = mails
             }
 
+            console.log(filteredMails)
             return filteredMails
         })
         .catch(error => {
@@ -152,7 +153,7 @@ function _createMails() {
                 from: fromIsUser ? 'Momo@appsus.com' : `${_makeName()}@appsus.com`,
                 to: toIsUser ? 'Momo@appsus.com' : `${_makeName()}@appsus.com`,
                 isStarred: Math.random() > 0.7,
-                isRead: Math.random() < 0.7,
+                isRead: Math.random() < 0.5,
                 isArchive: false,
             }
             mails.push(mail)

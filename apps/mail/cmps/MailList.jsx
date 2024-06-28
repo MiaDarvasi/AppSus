@@ -8,7 +8,7 @@ export function MailList() {
     const { mails, setMails, filterBy, onRemove } = useOutletContext()
     const [hoveredItemId, setHoveredItemId] = useState(null)
     const [sortBy, setSortBy] = useState('latest')
-    const [filterType, setFilterType] = useState('all')
+    const [filterType, setFilterType] = useState('inbox')
 
     function onToggleStarred(mailId) {
         mailService.toggleStarred(mailId)
@@ -60,6 +60,9 @@ export function MailList() {
             sortedMails.sort((a, b) => a.createdAt - b.createdAt)
         }
 
+        if (filterType === 'inbox') {
+            sortedMails = sortedMails.filter(mail => !mail.isArchive)
+        }
         if (filterType === 'starred') {
             sortedMails = sortedMails.filter(mail => mail.isStarred)
         }
@@ -83,7 +86,7 @@ export function MailList() {
                     <option value="earliest">Earliest First</option>
                 </select>
                 <select value={filterType} onChange={handleChangeFilterType}>
-                    <option value="all">All</option>
+                    <option value="inbox">All</option>
                     <option value="starred">Starred</option>
                     <option value="read">Read</option>
                     <option value="unread">Unread</option>

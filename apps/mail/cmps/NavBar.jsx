@@ -59,7 +59,7 @@ export function NavBar({ mails, setMails }) {
                 </button>
                 <button
                     value="archive"
-                    className={`${(filterType === 'inbox') ? 'selected' : ''}`}
+                    className={`${(filterType === 'archive') ? 'selected' : ''}`}
                     onClick={() => onChangeFilterType('archive')}>
                     <img src="./assets/img/archive.svg" />Archive
                 </button>
