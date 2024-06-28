@@ -109,13 +109,13 @@ const updateNote = (noteId, updatedInfo) => {
     sortNotes(notes);
   }, [notes]);
 
-  const handleAddNote = (text, noteType) => { 
+  const handleAddNote = (text) => { 
     const newNote = {
       id: generateUniqueId(),
       createdAt: Date.now(),
       type: noteType,
       isPinned: false,
-      style: { backgroundColor: selectedColor },
+      style: { backgroundColor: '#fff' },
       info: { txt: text },
     };
     const updatedNotes = [...notes, newNote];

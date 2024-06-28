@@ -1,6 +1,6 @@
 export function NavBar() {
     return (
-        <div className="nav-bar-categories">
+        <div className="nav-bar">
             <div className="btn-Notes">
                 <img src="assets/img/light-bulb.png" />
                 <h3>Notes</h3>
@@ -8,7 +8,7 @@ export function NavBar() {
             <div className="main-categories">
                 <div className="btn-categories">
                     <img src="assets/img/bell.png" />
-                    <h3>Rminder</h3>
+                    <h3>Eminder</h3>
                 </div >
                 <div className="btn-categories">
                     <img src="assets/img/pen.png" />

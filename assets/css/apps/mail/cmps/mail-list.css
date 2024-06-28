@@ -1,32 +1,98 @@
 .mail-list-container {
     grid-column: 2;
+    padding-inline: 0.5rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    overflow: hidden;
 }
+
+
+/* NAV */
+
+.mail-list-container .mail-list-nav {
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem;
+    background-color: var(--mail-clr4);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.mail-list-container .mail-list-nav select {
+    padding: 0.2rem;
+    border: 1px solid rgb(219, 218, 218);
+    border-radius: 20px;
+    color: rgb(71, 71, 71);
+}
+
+
+/* LIST */
 
 .mail-list {
     display: grid;
-    padding-inline: 0.5rem;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.mail-list li {
+    display: flex;
+    background-color: var(--mail-clr4);
+    align-items: center;
+    border-block-end: 1px solid var(--grey1);
+    padding-inline-start: 0.3rem;
+    
+}
+
+.mail-list li:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .mail-list article {
-    display: flex;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
 
     justify-content: space-between;
     align-items: center;
 
     background-color: var(--mail-clr4);
-    padding-inline: 1rem;
-    border-block-end: 1px solid var(--grey1);
+    padding-inline-start: 1rem;
+    padding-inline-end: 0.5rem;
 }
 
-.mail-list li:hover .mail-date {
+.mail-list li:hover .mail-prev-content {
+    margin-inline-start: 0.85rem;
+}
+
+.mail-list li:hover {
+    z-index: 1;
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.1);
+}
+
+
+.mail-list li:hover .mail-prev-date {
     display: none;
 }
 
 .mail-list .btns-mail-prev {
     position: relative;
-    top: -50%;
-    left: 80%;
+    display: flex;
+    gap: 0.5rem;
+    margin-inline: 1rem;
+}
+
+.mail-list .btns-mail-prev button {
+    all: unset;
+    padding: 0.3rem;
+    border-radius: 50%;
+}
+
+.mail-list .btns-mail-prev button:hover {
+    background-color: rgb(229, 228, 228);
+}
+
+.mail-list .btns-mail-prev img {
+    width: 0.7rem;
 }
 
 .mail-list article>*:first-child {
@@ -35,23 +101,43 @@
     align-items: center;
 }
 
-.mail-list .mail-body {
+.mail-list .mail-prev-body {
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    padding: 0;
+    margin: 0.1rem;
+}
+
+.mail-list .mail-prev-subject {
+    font-family: lato-reg;
+    padding: 0;
+    margin: 0.1rem;
+}
+
+.mail-list .mail-prev-from {
+    font-family: lato-reg;
 }
 
 .mail-list li {
     font-size: 0.8rem;
-    font-family: lato-reg;
+    font-family: lato-light;
     font-weight: bold;
 }
 
-.mail-list .star {
+.mail-list .star .fa-solid {
     color: gold;
+}
+
+.mail-list .star .fa-regular {
+    color: rgb(166, 166, 166);
 }
 
 .mail-list .btns-mail-prev button:hover {
     cursor: pointer;
+}
+
+.mail-list .is-read {
+    background-color: var(--mail-clr5);
 }

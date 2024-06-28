@@ -4,25 +4,25 @@ export const NoteFilter = ({ filterBy, clearFilters }) => {
     const [filter, setFilter] = useState({
       searchText: '',
       type: 'all'
-    })
+    });
   
     const handleChange = (event) => {
-      const { name, value } = event.target
-      const updatedFilter = { ...filter, [name]: value }
-      setFilter(updatedFilter)
-      filterBy(updatedFilter.searchText, updatedFilter.type)
-    }
+      const { name, value } = event.target;
+      const updatedFilter = { ...filter, [name]: value };
+      setFilter(updatedFilter);
+      filterBy(updatedFilter.searchText, updatedFilter.type);
+    };
   
     const handleClearFilters = () => {
       setFilter({
         searchText: '',
         type: 'all'
-      })
-      clearFilters()
-    }
+      });
+      clearFilters();
+    };
   
     return (
-      <div className="filter">
+      <div>
         <form className="note-filter">
           <input
             type="text"
@@ -34,7 +34,7 @@ export const NoteFilter = ({ filterBy, clearFilters }) => {
     
         </form>
         <div className="filter-icon"><img src="assets/img/search.png"/></div>
-        <button className="btn-filter" onClick={handleClearFilters}>X</button>
+        <button className="btn-filter" onClick={handleClearFilters}>Clear Filters</button>
       </div>
-    )
-  }
+    );
+  };
