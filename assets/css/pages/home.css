@@ -3,9 +3,10 @@
 
     padding: 1rem;
     padding-block-start: 3rem;
-    background-color: aliceblue;
+    background-color: rgb(255, 255, 255);
     margin: auto;
     margin-block-start: 5rem;
+    border-radius: 10px;
     font-family: lato-light;
 }
 

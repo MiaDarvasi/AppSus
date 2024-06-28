@@ -16,7 +16,8 @@
     }
 
     .compose-mail {
-        left: 15%;
+        top: 2rem;
+        left: 50%;
     }
 }
 
@@ -43,7 +44,8 @@
     }
 
     .compose-mail {
-        left: 15%;
+        top: 17rem;
+        left: 50%;
     }
 }
 
@@ -66,8 +68,8 @@
     }
 
     .compose-mail {
-        width: 30rem;
-        left: 30%;
+        width: 28rem;
+        left: 10rem;
     }
 }
 
