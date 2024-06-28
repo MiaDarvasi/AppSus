@@ -1,0 +1,41 @@
+.about {
+    font-family: lato-reg;
+    padding-block: 3rem;
+    background-color: aliceblue;
+    margin-inline: 3rem;
+    margin-block: 1rem ;
+    border-radius: 10px;
+}
+
+.about h2 {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    margin-inline: 2rem;
+    border-radius: 10px;
+}
+
+.about img {
+    width: 15rem;
+    padding-block: 2rem ;
+}
+
+.about h2 span {
+    position: relative;
+    right: 5rem;
+    bottom: 2rem;
+}
+
+.about h1 {
+    font-size: 1.1rem;
+}
+
+.about .about-crew {
+    width: 50%;
+    padding-inline-start: 38%;
+    padding-block-start: 2rem;
+}
+
+.about p {
+    color: rgb(91, 90, 90);
+}

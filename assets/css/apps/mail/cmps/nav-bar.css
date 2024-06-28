@@ -61,6 +61,6 @@
     width: 1rem;
 }
 
-.nav-bar .active {
+.selected {
     background-color: pink;
 }

@@ -17,6 +17,12 @@
 .home h1 {
     font-family: lato-light;
     font-size: 2rem;
+    text-align: center;
+}
+
+.home h1 span {
+    position: relative;
+    right: 3rem
 }
 
 .home-content {

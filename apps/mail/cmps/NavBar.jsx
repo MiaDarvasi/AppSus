@@ -30,37 +30,38 @@ export function NavBar({ mails, setMails }) {
 
     function onChangeFilterType(filterType) {
         setFilterType(filterType)
+        console.log(filterType)
     }
 
     return (
         <div className="nav-bar">
             <button className="btn-compose"
                 onClick={() => onShowCompose()}>
-                <img src="/assets/img/compose.svg" />Compose</button>
+                <img src="./assets/img/compose.svg" />Compose</button>
             <section className="nav-btns">
                 <button
                     value="inbox"
-                    className={`inbox ${(filterType === 'inbox') ? 'active' : ''}`}
+                    className={`${(filterType === 'inbox') ? 'selected' : ''}`}
                     onClick={() => onChangeFilterType('inbox')}>
-                    <img src="/assets/img/inbox.svg" />Inbox
+                    <img src="./assets/img/inbox.svg" />Inbox
                 </button>
                 <button
                     value="starred"
-                    className={`inbox ${(filterType === 'starred') ? 'active' : ''}`}
+                    className={`${(filterType === 'starred') ? 'selected' : ''}`}
                     onClick={() => onChangeFilterType('starred')}>
-                    <img src="/assets/img/star.svg" />Starred
+                    <img src="./assets/img/star.svg" />Starred
                 </button>
                 <button
                     value="sent"
-                    className={`inbox ${(filterType === 'sent') ? 'active' : ''}`}
+                    className={`${(filterType === 'sent') ? 'selected' : ''}`}
                     onClick={() => onChangeFilterType('sent')}>
-                    <img src="/assets/img/send.svg" />Sent
+                    <img src="./assets/img/send.svg" />Sent
                 </button>
                 <button
                     value="archive"
-                    className={`inbox ${(filterType === 'inbox') ? 'active' : ''}`}
+                    className={`${(filterType === 'inbox') ? 'selected' : ''}`}
                     onClick={() => onChangeFilterType('archive')}>
-                    <img src="/assets/img/archive.svg" />Archive
+                    <img src="./assets/img/archive.svg" />Archive
                 </button>
             </section>
             {compose && <ComposeMail closeCompose={onCloseCompose} compose={compose} mails={mails} setMails={setMails} />}

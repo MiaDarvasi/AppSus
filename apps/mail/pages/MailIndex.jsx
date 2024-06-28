@@ -14,7 +14,7 @@ import { MailHeader } from '../cmps/MailHeader.jsx'
 
 
 export function MailIndex() {
-
+    const [filterBy, setFilterBy] = useState({ txt: '' })
     const [mails, setMails] = useState([])
 
     useEffect(() => {
@@ -46,9 +46,9 @@ export function MailIndex() {
     if (!mails || !mails.length) return <div>Loading...</div>
     return (
         <section className="mail-main-container">
-            <MailHeader mails={mails} setMails={setMails}/>
-            <NavBar mails={mails} setMails={setMails}/>
-            <Outlet context={{ mails, setMails, onRemove: onRemoveMail }} />
+            <MailHeader mails={mails} setMails={setMails} filterBy={filterBy} setFilterBy={setFilterBy} />
+            <NavBar mails={mails} setMails={setMails} />
+            <Outlet context={{ mails, filterBy, setMails, onRemove: onRemoveMail }} />
             {/* <ComposeMail /> */}
         </section>
     )

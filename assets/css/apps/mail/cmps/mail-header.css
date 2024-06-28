@@ -1,4 +1,5 @@
 .mail-header {
+    z-index: 1;
     position: sticky;
     top: 0;
     grid-column: 1 / span 2;
@@ -34,6 +35,8 @@
 }
 
 .mail-header .mail-header-search input {
+    width: 100%;
+
     border: none;
     border-radius: 10px;
     padding: 0.5rem;

@@ -1,11 +1,11 @@
 import { MailPreview } from '../cmps/MailPreview.jsx'
-import { mailService } from '../services/mail.service.js'
+import { getMailsForDisplay, mailService } from '../services/mail.service.js'
 
 const { Link, useOutletContext } = ReactRouterDOM
 const { useState } = React
 
 export function MailList() {
-    const { mails, setMails, onRemove } = useOutletContext()
+    const { mails, setMails, filterBy, onRemove } = useOutletContext()
     const [hoveredItemId, setHoveredItemId] = useState(null)
     const [sortBy, setSortBy] = useState('latest')
     const [filterType, setFilterType] = useState('all')
@@ -90,7 +90,7 @@ export function MailList() {
                 </select>
             </section>
             <ul className="mail-list clean-list">
-                {filteredMails.map(mail =>
+                {getMailsForDisplay(filteredMails, filterBy).map(mail =>
                     <li key={mail.id}
                         className={(mail.isRead) ? 'is-read' : ''}
                         onMouseEnter={() => setHoveredItemId(mail.id)}
@@ -102,13 +102,13 @@ export function MailList() {
                                 <i className="fa-regular fa-star"></i>}
                         </span>
                         <Link to={`/mail/details/${mail.id}`}>
-                            <MailPreview mail={mail} onRemove={onRemove}/>
+                            <MailPreview mail={mail} onRemove={onRemove} />
                         </Link>
                         {hoveredItemId === mail.id && (
                             <section className="btns-mail-prev">
-                                <button onClick={() => onRemove(mail.id)} title="Trash"><img src="/assets/img/trash.svg" /></button>
-                                <button onClick={() => onSetArchive(mail.id)} title="Archive"><img src="/assets/img/archive.svg" /></button>
-                                <button onClick={() => onSetUnread(mail.id)} title="Set Unread"><img src="/assets/img/unread.svg" /></button>
+                                <button onClick={() => onRemove(mail.id)} title="Trash"><img src="./assets/img/trash.svg" /></button>
+                                <button onClick={() => onSetArchive(mail.id)} title="Archive"><img src="./assets/img/archive.svg" /></button>
+                                <button onClick={() => onSetUnread(mail.id)} title="Set Unread"><img src="./assets/img/unread.svg" /></button>
                             </section>)}
                     </li>
                 )}

@@ -4,7 +4,6 @@ const { useParams } = ReactRouterDOM
 import { mailService } from "../services/mail.service.js"
 import { TextboxRating } from "../cmps/TextboxRating.jsx"
 
-
 export function ComposeMail({ closeCompose, compose, mails, setMails }) {
 
     const [mailToAdd, setMailToAdd] = useState(mailService.getEmptyMail())
@@ -51,9 +50,9 @@ export function ComposeMail({ closeCompose, compose, mails, setMails }) {
 
     return compose && <div className="compose-mail">
         <section className="compose-mail-top">
-            <button onClick={onBack} title="back"><img src="/assets/img/arrow_back.svg" /></button>
+            <button onClick={onBack} title="back"><img src="./assets/img/arrow_back.svg" /></button>
             <h1>Compose</h1>
-            <button className="btn-img-center" onClick={onSaveMail} title="send"><img src="/assets/img/send.svg" /></button>
+            <button className="btn-img-center" onClick={onSaveMail} title="send"><img src="./assets/img/send.svg" /></button>
         </section>
         <form onSubmit={onSaveMail}>
 
