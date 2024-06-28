@@ -9,7 +9,6 @@ const loggedUser = {
 }
 
 _createMails()
-
 export const mailService = {
     query,
     get,
@@ -68,6 +67,16 @@ export function getFilteredMails(filterType = 'inbox') {
             throw error
         })
 }
+
+export const getMailsForDisplay = (mails, { txt }) => {
+    const filteredMails = mails.filter(mail => {
+        return (
+            mail.subject.toLowerCase().includes(txt.toLowerCase()) ||
+            mail.from.toLowerCase().includes(txt.toLowerCase())
+        );
+    });
+    return filteredMails
+};
 
 
 function getEmptyMail(subject = '', body = '', to = '', from = '') {

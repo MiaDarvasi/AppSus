@@ -51,16 +51,16 @@ export function MailDetails() {
         <section className="mail-details-btns">
             <Link to="/mail/inbox">
                 <button onClick={() => onSetRead(mailId)} title="Back">
-                    <img src="/assets/img/arrow_back.svg" /></button>
+                    <img src="./assets/img/arrow_back.svg" /></button>
             </Link>
             <section className="mail-details-btns-edit">
                 <Link to="/mail/inbox">
                     <button onClick={() => onSetArchive(mailId)} title="Archive">
-                        <img src="/assets/img/archive.svg" /></button>
+                        <img src="./assets/img/archive.svg" /></button>
                 </Link>
                 <Link to="/mail/inbox">
                     <button onClick={() => onRemove(mailId)} title="Trash">
-                        <img src="/assets/img/trash.svg" /></button>
+                        <img src="./assets/img/trash.svg" /></button>
                 </Link>
             </section>
 
