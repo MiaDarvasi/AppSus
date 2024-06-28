@@ -5,7 +5,7 @@ import { mailService } from "../services/mail.service.js"
 const { useState, useEffect } = React
 
 
-export function MailNavBar({ mails, setMails }) {
+export function NavBar({ mails, setMails }) {
 
     const [compose, setCompose] = useState(null)
     const [filterType, setFilterType] = useState('inbox')
