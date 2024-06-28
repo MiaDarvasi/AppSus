@@ -1,4 +1,4 @@
-export function NavBar() {
+export function NavBarNote() {
     return (
         <div className="nav-bar-categories">
             <div className="btn-Notes">

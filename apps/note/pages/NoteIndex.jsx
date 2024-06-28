@@ -2,7 +2,7 @@ import { NoteList } from '../cmps/NoteList.jsx'
 import { noteService } from '../services/note.service.js'
 import { NoteFilter } from '../cmps/NoteFilter.jsx'
 import { NoteInput } from '../cmps/NoteInput.jsx'
-import { NavBar } from '../cmps/navBar.jsx'
+import { NavBarNote } from '../cmps/NavBarNote.jsx'
 import { HeaderNote } from "../cmps/HeaderNote.jsx";
 
 const { useState, useEffect, useRef } = React
@@ -131,7 +131,7 @@ const updateNote = (noteId, updatedInfo) => {
     <button className="settings-button"><img src="assets/img/settings_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
     <button className="apps-button"><img src="assets/img/apps_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
     <div className="user">s</div>
-    <NavBar />
+    <NavBarNote />
     <NoteFilter filterBy={filterBy} clearFilters={clearFilters} />
     <NoteInput onAddNote={handleAddNote} />
     <NoteList
