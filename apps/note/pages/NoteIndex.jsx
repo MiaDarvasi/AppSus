@@ -4,14 +4,12 @@ import { NoteFilter } from '../cmps/NoteFilter.jsx'
 import { NoteInput } from '../cmps/NoteInput.jsx'
 import { NavBar } from '../cmps/navBar.jsx'
 import { HeaderNote } from "../cmps/HeaderNote.jsx"
-const { useState, useEffect,useRef } = React
+const { useState, useEffect } = React
 
 
 export function NoteIndex() {
   const [notes, setNotes] = useState([])
   const [filteredNotes, setFilteredNotes] = useState([])
-  const [selectedColor, setSelectedColor] = useState('#FFFFFF')
-  const colorPickerRef = useRef(null)
 
   useEffect(() => {
     fetchNotes()

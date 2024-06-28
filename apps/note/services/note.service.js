@@ -142,7 +142,7 @@ export async function initializeNotes() {
     },
   ];
 
-  // localStorage.setItem(NOTES_KEY, JSON.stringify(notes));
+  localStorage.setItem(NOTES_KEY, JSON.stringify(notes));
   return notes;
 }
 

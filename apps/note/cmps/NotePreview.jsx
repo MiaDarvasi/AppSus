@@ -19,10 +19,10 @@ const componentMap = {
 }
 
 export function NotePreview({ note, updateNoteColor, toggleNotePinned, deleteNote, duplicateNote, updateNote }) {
-  const [isEditing, setIsEditing] = useState(false)
-  const [editedContent, setEditedContent] = useState(note.info.txt || '')
-  const [newTodoText, setNewTodoText] = useState('')
-  const [isColorMenuOpen, setIsColorMenuOpen] = useState(false)
+  const [isEditing, setIsEditing] = React.useState(false)
+  const [editedContent, setEditedContent] = React.useState(note.info.txt || '')
+  const [newTodoText, setNewTodoText] = React.useState('')
+  const [isColorMenuOpen, setIsColorMenuOpen] = React.useState(false)
 
   const handleColorChange = (color) => {
     updateNoteColor(note.id, color)
@@ -80,9 +80,22 @@ export function NotePreview({ note, updateNoteColor, toggleNotePinned, deleteNot
     return null
   }
 
+  const handleEditClick = () => {
+    if (note.type === 'NoteTxt' || note.type === 'NoteTodos') {
+      setIsEditing(true)
+    }
+    
+  }
+
+  const handleCanvasClick = (e) => {
+    if (note.type === 'NoteCanvas') {
+      e.stopPropagation() 
+    }
+  }
+
   return (
-    <div className="note-preview" style={note.style}>
-      <div onClick={() => setIsEditing(true)}>
+    <div className="note-preview" style={note.style} onClick={handleCanvasClick}>
+      <div onClick={handleEditClick}>
         {isEditing ? (
           note.type === 'NoteTodos' ? (
             <div className="todos-edit">
@@ -123,7 +136,11 @@ export function NotePreview({ note, updateNoteColor, toggleNotePinned, deleteNot
         <div className="note-actions">
           <button onClick={toggleEdit}>Edit</button>
           <button onClick={handlePinToggle}>
-            {note.isPinned ? <img src="assets/img/pin (1).png" alt="Unpin" /> : <img src="assets/img/pin.png" alt="Pin" />}
+            {note.isPinned ? (
+              <img src="assets/img/pin (1).png" alt="Unpin" />
+            ) : (
+              <img src="assets/img/pin.png" alt="Pin" />
+            )}
           </button>
           <button onClick={handleDelete}>
             <img src="assets/img/trash-solid.svg" alt="Delete" />
@@ -137,7 +154,17 @@ export function NotePreview({ note, updateNoteColor, toggleNotePinned, deleteNot
             </button>
             {isColorMenuOpen && (
               <div className="color-menu">
-                {['#72DC59', '#5CDBD0', '#FFCDD2', '#DBA724', '#0855DB', '#4B72DC', '#B71C1C', '#212833', '#D50000'].map((color) => (
+                {[
+                  '#72DC59',
+                  '#5CDBD0',
+                  '#FFCDD2',
+                  '#DBA724',
+                  '#0855DB',
+                  '#4B72DC',
+                  '#B71C1C',
+                  '#212833',
+                  '#D50000',
+                ].map((color) => (
                   <button
                     key={color}
                     className="color-button"
@@ -159,4 +186,3 @@ export function NotePreview({ note, updateNoteColor, toggleNotePinned, deleteNot
     </div>
   )
 }
-

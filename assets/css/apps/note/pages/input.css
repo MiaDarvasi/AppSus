@@ -24,7 +24,10 @@
     width:100% ;
 
 }
-
+input{
+    padding: 10px;
+    width: 400px;
+}
 .note-input select {
     border: none;
     background-color: transparent;

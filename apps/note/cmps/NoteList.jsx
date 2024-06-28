@@ -14,5 +14,5 @@ export function NoteList({ notes, updateNoteColor, toggleNotePinned, deleteNote,
           />
         ))}
       </div>
-    );
+    )
   }
