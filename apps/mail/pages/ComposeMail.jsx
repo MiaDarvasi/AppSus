@@ -51,9 +51,9 @@ export function ComposeMail({ closeCompose, compose, mails, setMails }) {
 
     return compose && <div className="compose-mail">
         <section className="compose-mail-top">
-            <button onClick={onBack}><i className="fa-solid fa-arrow-left"></i></button>
+            <button onClick={onBack} title="back"><img src="/assets/img/arrow_back.svg" /></button>
             <h1>Compose</h1>
-            <button className="btn-img-center" onClick={onSaveMail}><img src="/assets/img/send.svg" /></button>
+            <button className="btn-img-center" onClick={onSaveMail} title="send"><img src="/assets/img/send.svg" /></button>
         </section>
         <form onSubmit={onSaveMail}>
 

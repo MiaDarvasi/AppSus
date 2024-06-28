@@ -23,6 +23,24 @@ export function MailList() {
 
     function onSetArchive(mailId) {
         mailService.setArchive(mailId)
+        const updatedMails = mails.map(mail => {
+            if (mail.id === mailId) {
+                return { ...mail, isArchive: true }
+            }
+            return mail
+        })
+        setMails(updatedMails)
+    }
+
+    function onSetUnread(mailId) {
+        mailService.setUnread(mailId)
+        const updatedMails = mails.map(mail => {
+            if (mail.id === mailId) {
+                return { ...mail, isRead: false }
+            }
+            return mail
+        })
+        setMails(updatedMails)
     }
 
     function handleChangeSortBy(event) {
@@ -45,6 +63,12 @@ export function MailList() {
         if (filterType === 'starred') {
             sortedMails = sortedMails.filter(mail => mail.isStarred)
         }
+        if (filterType === 'unread') {
+            sortedMails = sortedMails.filter(mail => !mail.isRead)
+        }
+        if (filterType === 'read') {
+            sortedMails = sortedMails.filter(mail => mail.isRead)
+        }
 
         return sortedMails
     }
@@ -61,6 +85,8 @@ export function MailList() {
                 <select value={filterType} onChange={handleChangeFilterType}>
                     <option value="all">All</option>
                     <option value="starred">Starred</option>
+                    <option value="read">Read</option>
+                    <option value="unread">Unread</option>
                 </select>
             </section>
             <ul className="mail-list clean-list">
@@ -76,12 +102,13 @@ export function MailList() {
                                 <i className="fa-regular fa-star"></i>}
                         </span>
                         <Link to={`/mail/details/${mail.id}`}>
-                            <MailPreview mail={mail} onRemove={onRemove} />
+                            <MailPreview mail={mail} onRemove={onRemove}/>
                         </Link>
                         {hoveredItemId === mail.id && (
                             <section className="btns-mail-prev">
-                                <button onClick={() => onRemove(mail.id)}><img src="/assets/img/trash.svg" /></button>
-                                <button onClick={() => onSetArchive(mail.id)}><img src="/assets/img/archive.svg" /></button>
+                                <button onClick={() => onRemove(mail.id)} title="Trash"><img src="/assets/img/trash.svg" /></button>
+                                <button onClick={() => onSetArchive(mail.id)} title="Archive"><img src="/assets/img/archive.svg" /></button>
+                                <button onClick={() => onSetUnread(mail.id)} title="Set Unread"><img src="/assets/img/unread.svg" /></button>
                             </section>)}
                     </li>
                 )}

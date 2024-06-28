@@ -1,5 +1,12 @@
+// import { mailService } from '../services/mail.service.js'
 
 export function MailPreview({ mail }) {
+
+    // onSetRead(mail.id)
+
+    // function onSetRead(mailId) {
+    //     mailService.setRead(mailId)
+    // }
 
     const { from, body, subject, createdAt } = mail
 

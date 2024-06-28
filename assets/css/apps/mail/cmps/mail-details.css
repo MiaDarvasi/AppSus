@@ -3,6 +3,36 @@
     flex-direction: column;
     gap: 1rem;
     padding: 1rem;
+    font-family: lato-reg;
+    height: 100vh;
+    background-color: white;
+    border-radius: 10px;
+    margin-inline: 0.5rem;
+}
+
+.mail-details img {
+    width: 1.3rem;
+}
+
+.mail-details-btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mail-details-btns .mail-details-btns-edit button {
+    margin-inline-start: 0.4rem;
+}
+
+.mail-details button {
+    all: unset;
+    width: 1.3rem;
+    padding: 0.2rem;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+.mail-details button:hover {
+    background-color: rgb(222, 222, 222);
 }
 
 .mail-details h1 {

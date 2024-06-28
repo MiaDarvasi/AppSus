@@ -1,12 +1,15 @@
 header {
-    background: var(--main-bg-color);
-    border-bottom: 2px solid var(--grey1);
+    background-color: white;
+    border-bottom: 1px solid var(--grey1);
 }
 
 .app-header {
     display: flex;
     justify-content: space-between;
-    padding: 20px 0;
+    align-items: center;
+    padding: 0.5rem;
+    font-family: lato-light;
+
 }
 
 nav a {
@@ -18,7 +21,16 @@ nav a:active {
 }
 
 nav a.active {
-    color: darkblue;
+    color: rgb(173, 201, 230);
     font-weight: bold;
     text-decoration: overline;
+}
+
+.app-header img {
+    padding-inline-start: 2rem;
+    width: 3rem;
+}
+
+.app-header h3 {
+    font-family: lato-light;
 }

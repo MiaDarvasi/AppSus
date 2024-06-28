@@ -19,6 +19,9 @@ export const mailService = {
     getDefaultFilter,
     toggleStarred,
     setArchive,
+    setUnread,
+    setRead,
+    getFilteredMails,
 }
 
 function query() {
@@ -40,6 +43,32 @@ function save(mail) {
         return storageService.post(MAIL_KEY, mail)
     }
 }
+
+export function getFilteredMails(filterType = 'inbox') {
+    return storageService.query(MAIL_KEY)
+        .then(mails => {
+            let filteredMails
+
+            if (filterType === 'inbox') {
+                filteredMails = mails.filter(mail => !mail.isArchive)
+            } else if (filterType === 'starred') {
+                filteredMails = mails.filter(mail => mail.isStarred)
+            } else if (filterType === 'sent') {
+                filteredMails = mails.filter(mail => mail.from === 'Momo@appsus.com')
+            } else if (filterType === 'archive') {
+                filteredMails = mails.filter(mail => mail.isArchive)
+            } else {
+                filteredMails = mails
+            }
+
+            return filteredMails
+        })
+        .catch(error => {
+            console.error('Error querying mails:', error);
+            throw error
+        })
+}
+
 
 function getEmptyMail(subject = '', body = '', to = '', from = '') {
     return {
@@ -78,6 +107,22 @@ function setArchive(mailId) {
         });
 }
 
+function setUnread(mailId) {
+    storageService.get(MAIL_KEY, mailId)
+        .then(mail => {
+            mail.isRead = false
+            return storageService.put(MAIL_KEY, mail);
+        });
+}
+
+function setRead(mailId) {
+    storageService.get(MAIL_KEY, mailId)
+        .then(mail => {
+            mail.isRead = true
+            return storageService.put(MAIL_KEY, mail);
+        });
+}
+
 
 function _createMails() {
     let mails = _loadFromStorage(MAIL_KEY)
@@ -85,14 +130,14 @@ function _createMails() {
     if (!mails || !mails.length) {
         mails = []
 
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 40; i++) {
             const fromIsUser = Math.random() > 0.7
             const toIsUser = !fromIsUser
             const mail = {
                 id: utilService.makeId(),
                 createdAt: _getRandomDate(),
                 subject: _makeSubject(),
-                body: utilService.makeLorem(20),
+                body: utilService.makeLorem(50),
                 sentAt: Date.now(),
                 removedAt: null,
                 from: fromIsUser ? 'Momo@appsus.com' : `${_makeName()}@appsus.com`,

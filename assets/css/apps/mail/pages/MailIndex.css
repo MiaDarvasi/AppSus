@@ -1,17 +1,9 @@
- /* mail index  */
+/* mq */
+@import url(../mq-mail.css);
 
-@import '../cmps/mail-list.css';
-@import '../cmps/nav-bar.css';
-@import '../cmps/mail-details.css';
-@import '../cmps/compose-mail.css';
-@import '../cmps/mail-header.css';
-
-
-
-
-.mail-main-container {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    background-color: var(--mail-main-bg-clr);
-}
-
+ /* mail cmps  */
+ @import url(../cmps/compose-mail.css);
+ @import url(../cmps/mail-details.css);
+ @import url(../cmps/mail-header.css);
+ @import url(../cmps/mail-list.css);
+ @import url(../cmps/nav-bar.css);
