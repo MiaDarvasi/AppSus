@@ -19,6 +19,10 @@
         top: 2rem;
         left: 50%;
     }
+
+    .mail-list .btns-mail-prev {
+        gap: 0.1rem;
+    }
 }
 
 
@@ -44,8 +48,13 @@
     }
 
     .compose-mail {
+        width: 20rem;
         top: 17rem;
         left: 50%;
+    }
+
+    .mail-list .btns-mail-prev {
+        gap: 0.1rem;
     }
 }
 
@@ -71,6 +80,10 @@
         width: 28rem;
         left: 10rem;
     }
+
+    .mail-list .btns-mail-prev {
+        gap: 0.5rem;
+    }
 }
 
 
@@ -90,6 +103,10 @@
     .compose-mail {
         left: 20rem;
         width: 600px;
+    }
+
+    .mail-list .star {
+        margin-inline-start: 1rem;
     }
 }
 

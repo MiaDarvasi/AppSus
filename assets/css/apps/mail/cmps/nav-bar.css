@@ -11,7 +11,7 @@
 .nav-bar .btn-compose {
     display: flex;
     gap: 1rem;
-    max-width: 10rem;
+    max-width: 9rem;
 
     padding: 1rem;
     background-color: #C2E7FF;
@@ -47,7 +47,7 @@
     padding: 0.5rem;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    padding-inline-start: 0.7rem;
+    padding-inline-start: 1rem;
 
     font-family: lato-reg;
     color: rgb(69, 69, 69);
