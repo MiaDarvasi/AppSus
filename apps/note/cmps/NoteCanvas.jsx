@@ -64,7 +64,7 @@ export function NoteCanvas({ title, canvasData,style }) {
             <h3>{title}</h3>
             <canvas ref={canvasRef} width={300} height={200} style={{ border: '1px solid black' }} />
             <button onClick={clearCanvas}>Clear Canvas</button>
-            <button onClick={toggleDrawing}>{isDrawing ? 'Stop Drawing' : 'Draw'}</button>
+            <button onClick={toggleDrawing}>{isDrawing ? <img src ="assets/img/pen (1).png" /> : <img src ="assets/img/pen.png"  />}</button>
         </div>
     )
 }

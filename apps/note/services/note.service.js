@@ -47,7 +47,7 @@ export async function initializeNotes() {
       type: 'NoteTxt',
       isPinned: true,
       style: {
-        backgroundColor: '#eef3C0'
+        backgroundColor: ''
       },
       info: {
         txt: 'Fullstack Me Baby!'
@@ -63,7 +63,7 @@ export async function initializeNotes() {
         title: 'Bobi and Me'
       },
       style: {
-        backgroundColor: '#fff'
+        backgroundColor: ''
       }
     },
     {
@@ -75,34 +75,23 @@ export async function initializeNotes() {
         title: 'Get my stuff together',
         todos: [
           { txt: 'Driving license', doneAt: null },
-          { txt: 'Coding power', doneAt: 187111111 }
+          { txt: 'Coding power', doneAt: 187111111 },
+          { txt: 'To make a cake', doneAt: 187111111 }
+
         ]
       }
     },
-    {
-      id: 'n104',
-      createdAt: 1112224,
-      type: 'NoteTodos',
-      isPinned: false,
-      info: {
-        title: 'get baba',
-        todos: [
-          { txt: 'Driving license', doneAt: null },
-          { txt: 'Coding power', doneAt: 187111111 }
-        ]
-      }
-    },
+
     {
       id: 'n105',
       createdAt: 1112222,
       type: 'NoteVideo',
       isPinned: true,
       style: {
-        backgroundColor: '#1BE3C0'
+        backgroundColor: ''
       },
       info: {
-        videoUrl: 'https://www.youtube.com/watch?v=8STxzM7aFa0',
-        title: 'Video Title',
+        videoUrl: 'https://res.cloudinary.com/demo/image/upload/kitten_fighting.mp4',
         autoplay: true,
         loop: true
       },
@@ -114,10 +103,9 @@ export async function initializeNotes() {
       isPinned: false,
       info: {
         url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-        title: 'Sample Audio'
       },
       style: {
-        backgroundColor: '#00d'
+        backgroundColor: ''
       }
     },
     {
@@ -127,12 +115,12 @@ export async function initializeNotes() {
       isPinned: false,
       info: {
         title: 'Canvas Note',
-        canvasData: null 
+        canvasData: null
       },
       style: {
-        backgroundColor: '#f0f0f0'
+        backgroundColor: ''
       }
-    },{
+    }, {
       id: 'n108',
       createdAt: 1112226,
       type: 'NoteMap',
@@ -142,7 +130,7 @@ export async function initializeNotes() {
         location: 'New York, NY'
       },
       style: {
-        backgroundColor: '#00d'
+        backgroundColor: ''
       }
     }
 

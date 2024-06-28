@@ -1,0 +1,50 @@
+@media (max-width: 600px) {
+    .note-preview {
+      max-width: 100%;
+      height: auto;
+      margin: 5px;
+    }
+  
+    .note-img img,
+    .note-video video {
+      width: 100%;
+      height: auto;
+    }
+  
+    .note-index {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .note-index-preview {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin: 0;
+    }
+  
+    .note-filter input {
+      width: calc(100% - 20px);
+      left: 10px;
+      top: 50px;
+    }
+  
+    .btn-filter {
+      left: calc(100% - 50px);
+      top: 60px;
+    }
+  
+    .view-button,
+    .settings-button,
+    .apps-button {
+      left: initial;
+      right: 10px;
+      top: 60px;
+      margin-left: 5px;
+    }
+  
+    .user {
+      left: initial;
+      right: 10px;
+      top: 60px;
+    }
+  }

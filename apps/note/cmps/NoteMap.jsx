@@ -13,5 +13,5 @@ export function NoteMap({ title, location }) {
                 allowFullScreen
             ></iframe>
         </div>
-    );
+    )
 }
