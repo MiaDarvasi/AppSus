@@ -4,8 +4,8 @@ export function Home() {
         <h1><img src="./assets/img/appsuslogo.png" /><span>AppSus</span></h1>
         <section className="home-content">
             <h3>Use your favorite platforms</h3>
-            <img src="./assets/img/gmaillogo.png" />
-            <img src="./assets/img/gkeeplogo.png" />
+            <img src="./assets/img/GmailLogo.png" />
+            <img src="./assets/img/GKeepLogo.png" />
         </section>
     </section>
 }

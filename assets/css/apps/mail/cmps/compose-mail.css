@@ -1,13 +1,6 @@
 .compose-mail {
-    /* position: fixed;
-    bottom: 0;
-    right: 10%; */
-
     position: absolute;
     top: 10rem;
-    left: 10%;
-
-
 
     display: flex;
     flex-direction: column;

@@ -7,7 +7,7 @@ const { Route, Routes, Outlet } = ReactRouterDOM
 import { mailService } from '../services/mail.service.js'
 import { MailDetails } from '../pages/MailDetails.jsx'
 import { MailList } from '../cmps/MailList.jsx'
-import { NavBar } from '../cmps/NavBar.jsx'
+import { mailNavBar } from '../cmps/mailNavBar.jsx'
 import { ComposeMail } from './ComposeMail.jsx'
 import { MailHeader } from '../cmps/MailHeader.jsx'
 
@@ -47,7 +47,7 @@ export function MailIndex() {
     return (
         <section className="mail-main-container">
             <MailHeader mails={mails} setMails={setMails} filterBy={filterBy} setFilterBy={setFilterBy} />
-            <NavBar mails={mails} setMails={setMails} />
+            <mailNavBar mails={mails} setMails={setMails} />
             <Outlet context={{ mails, filterBy, setMails, onRemove: onRemoveMail }} />
             {/* <ComposeMail /> */}
         </section>

@@ -1,8 +1,7 @@
 const { useState } = React
 
 export function MailHeader({ mails, setMails, filterBy, setFilterBy }) {
-    // const [filterValue, setFilterValue] = useState('');
-
+    
     const handleChange = (e) => {
         const { value } = e.target;
         setFilterBy(prev => ({ ...prev, txt: value }))
