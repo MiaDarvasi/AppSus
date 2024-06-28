@@ -1,7 +1,6 @@
 .compose-mail {
-    position: fixed;
-    bottom: 0;
-    right: 10%;
+    position: absolute;
+    top: 10rem;
 
     display: flex;
     flex-direction: column;
@@ -20,7 +19,7 @@
 .compose-mail .compose-mail-top {
     display: flex;
     gap: 1rem;
-    
+
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
 

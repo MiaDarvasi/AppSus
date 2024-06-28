@@ -9,10 +9,14 @@
 
     .mail-header {
         grid-template-columns: 1fr 2fr;
-    }  
+    }
 
     .mail-list article {
         grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .compose-mail {
+        left: 15%;
     }
 }
 
@@ -37,6 +41,10 @@
     .mail-list article {
         grid-template-columns: 1fr 2fr 1fr;
     }
+
+    .compose-mail {
+        left: 15%;
+    }
 }
 
 
@@ -56,6 +64,11 @@
     .mail-list article {
         grid-template-columns: 1fr 4fr 1fr;
     }
+
+    .compose-mail {
+        width: 30rem;
+        left: 30%;
+    }
 }
 
 
@@ -73,6 +86,7 @@
     }
 
     .compose-mail {
+        left: 60%;
         width: 600px;
     }
 }
