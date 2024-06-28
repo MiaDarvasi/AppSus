@@ -15,11 +15,6 @@ import { MailHeader } from '../cmps/MailHeader.jsx'
 
 export function MailIndex() {
 
-    // const [mailToSave, setMailToSave] = useState(mailService.getEmptyMail())
-    // const [compose, setCompose] = useState(null)
-
-
-
     const [mails, setMails] = useState([])
 
     useEffect(() => {
