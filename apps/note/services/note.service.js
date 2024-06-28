@@ -41,46 +41,7 @@ async function remove(noteId) {
 }
 export async function initializeNotes() {
   const notes = [
-    {
-      id: 'n101',
-      createdAt: 1112222,
-      type: 'NoteTxt',
-      isPinned: true,
-      style: {
-        backgroundColor: ''
-      },
-      info: {
-        txt: 'Fullstack Me Baby!'
-      }
-    },
-    {
-      id: 'n102',
-      createdAt: 1112223,
-      type: 'NoteImg',
-      isPinned: false,
-      info: {
-        url: 'https://cdn.pixabay.com/photo/2017/09/03/00/44/png-2709031_640.png',
-        title: 'Bobi and Me'
-      },
-      style: {
-        backgroundColor: ''
-      }
-    },
-    {
-      id: 'n103',
-      createdAt: 1112224,
-      type: 'NoteTodos',
-      isPinned: false,
-      info: {
-        title: 'Get my stuff together',
-        todos: [
-          { txt: 'Driving license', doneAt: null },
-          { txt: 'Coding power', doneAt: 187111111 },
-          { txt: 'To make a cake', doneAt: 187111111 }
-
-        ]
-      }
-    },
+    
 
     {
       id: 'n105',
@@ -97,12 +58,13 @@ export async function initializeNotes() {
       },
     },
     {
-      id: 'n106',
-      createdAt: 1112225,
-      type: 'NoteAudio',
+      id: 'n108',
+      createdAt: 1112226,
+      type: 'NoteMap',
       isPinned: false,
       info: {
-        url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+        title: 'Sample Map',
+        location: 'New York, NY'
       },
       style: {
         backgroundColor: ''
@@ -120,20 +82,64 @@ export async function initializeNotes() {
       style: {
         backgroundColor: ''
       }
-    }, {
-      id: 'n108',
-      createdAt: 1112226,
-      type: 'NoteMap',
+    }, 
+    {
+      id: 'n102',
+      createdAt: 1112223,
+      type: 'NoteImg',
       isPinned: false,
       info: {
-        title: 'Sample Map',
-        location: 'New York, NY'
+        url: 'https://cdn.pixabay.com/photo/2017/09/03/00/44/png-2709031_640.png',
+        title: 'Bobi and Me'
+      },
+      style: {
+        backgroundColor: '',
+        fontSize: "25px"
+      }
+    },
+    {
+      id: 'n103',
+      createdAt: 1112224,
+      type: 'NoteTodos',
+      isPinned: false,
+      info: {
+        title: 'Get my stuff together',
+        todos: [
+          { txt: 'Driving license', doneAt: null },
+          { txt: 'Coding power', doneAt: 187111111 },
+          { txt: 'To make a cake', doneAt: 187111111 }
+
+        ]
+      }
+    },
+    {
+      id: 'n106',
+      createdAt: 1112225,
+      type: 'NoteAudio',
+      isPinned: false,
+      info: {
+        url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
       },
       style: {
         backgroundColor: ''
       }
-    }
+    },
 
+  
+    {
+      id: 'n101',
+      createdAt: 1112222,
+      type: 'NoteTxt',
+      isPinned: false,
+      style: {
+        backgroundColor: '',
+        fontSize: '25px'
+
+      },
+      info: {
+        txt: 'Fullstack Me Baby!'
+      }
+    },
   ];
 
   // localStorage.setItem(NOTES_KEY, JSON.stringify(notes));

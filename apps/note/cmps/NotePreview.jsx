@@ -19,69 +19,69 @@ const componentMap = {
 }
 
 export function NotePreview({ note, updateNoteColor, toggleNotePinned, deleteNote, duplicateNote, updateNote }) {
-  const [isEditing, setIsEditing] = useState(false);
-  const [editedContent, setEditedContent] = useState(note.info.txt || '');
-  const [newTodoText, setNewTodoText] = useState('');
-  const [isColorMenuOpen, setIsColorMenuOpen] = useState(false);
+  const [isEditing, setIsEditing] = useState(false)
+  const [editedContent, setEditedContent] = useState(note.info.txt || '')
+  const [newTodoText, setNewTodoText] = useState('')
+  const [isColorMenuOpen, setIsColorMenuOpen] = useState(false)
 
   const handleColorChange = (color) => {
-    updateNoteColor(note.id, color);
-    setIsColorMenuOpen(false);
-  };
+    updateNoteColor(note.id, color)
+    setIsColorMenuOpen(false)
+  }
 
   const handlePinToggle = () => {
-    toggleNotePinned(note.id);
-  };
+    toggleNotePinned(note.id)
+  }
 
   const handleDelete = () => {
-    deleteNote(note.id);
-  };
+    deleteNote(note.id)
+  }
 
   const handleDuplicate = () => {
-    duplicateNote(note.id);
-  };
+    duplicateNote(note.id)
+  }
 
   const toggleEdit = () => {
-    setIsEditing(!isEditing);
-    setEditedContent(note.info.txt || ''); // Reset edited content to original text
-  };
+    setIsEditing(!isEditing)
+    setEditedContent(note.info.txt || '')
+  }
 
   const handleContentChange = (e) => {
-    setEditedContent(e.target.value);
-  };
+    setEditedContent(e.target.value)
+  }
 
   const handleSave = () => {
-    updateNote(note.id, { ...note.info, txt: editedContent });
-    setIsEditing(false);
-  };
+    updateNote(note.id, { ...note.info, txt: editedContent })
+    setIsEditing(false)
+  }
 
   const handleTodoChange = (index, value) => {
-    const updatedTodos = [...note.info.todos];
-    updatedTodos[index].txt = value;
-    updateNote(note.id, { ...note.info, todos: updatedTodos });
-  };
+    const updatedTodos = [...note.info.todos]
+    updatedTodos[index].txt = value
+    updateNote(note.id, { ...note.info, todos: updatedTodos })
+  }
 
   const handleTodoDelete = (index) => {
-    const updatedTodos = note.info.todos.filter((_, i) => i !== index);
-    updateNote(note.id, { ...note.info, todos: updatedTodos });
-  };
+    const updatedTodos = note.info.todos.filter((_, i) => i !== index)
+    updateNote(note.id, { ...note.info, todos: updatedTodos })
+  }
 
   const handleAddTodo = () => {
-    if (!newTodoText) return;
-    const newTodo = { txt: newTodoText, doneAt: null };
-    const updatedTodos = [...(note.info.todos || []), newTodo];
-    updateNote(note.id, { ...note.info, todos: updatedTodos });
-    setNewTodoText('');
-  };
+    if (!newTodoText) return
+    const newTodo = { txt: newTodoText, doneAt: null }
+    const updatedTodos = [...(note.info.todos || []), newTodo]
+    updateNote(note.id, { ...note.info, todos: updatedTodos })
+    setNewTodoText('')
+  }
 
-  const NoteComponent = componentMap[note.type];
+  const NoteComponent = componentMap[note.type]
 
   if (!NoteComponent) {
-    return null;
+    return null
   }
 
   return (
-    <main className="note-preview" style={note.style}>
+    <div className="note-preview" style={note.style}>
       <div onClick={() => setIsEditing(true)}>
         {isEditing ? (
           note.type === 'NoteTodos' ? (
@@ -156,8 +156,7 @@ export function NotePreview({ note, updateNoteColor, toggleNotePinned, deleteNot
           <button onClick={() => setIsEditing(false)}>Cancel</button>
         </div>
       )}
-    </main>
-  );
+    </div>
+  )
 }
-
 
