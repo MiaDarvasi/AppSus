@@ -3,7 +3,7 @@
     top: 3.5rem;
     display: flex;
     flex-direction: column;
-    height: 30rem;
+    height: 15rem;
     background-color: var(--mail-main-bg-clr);
 }
 
@@ -16,7 +16,7 @@
     background-color: #C2E7FF;
     border-radius: 15px;
     border: none;
-    margin: 0.3rem;
+    margin-inline: 0.3rem;
     margin-block-end: 1rem;
     font-family: lato-reg;
     font-size: 1rem;
@@ -44,14 +44,16 @@
     cursor: pointer;
 
     padding: 0.5rem;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+
     font-family: lato-reg;
     color: rgb(69, 69, 69);
+    transition: 0.4s;
 }
 
 .nav-bar .nav-btns button:hover {
-    background-color: rgb(227, 237, 252);
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+    background-color: rgb(229, 230, 231);
 }
 
 .nav-bar .nav-btns button img {

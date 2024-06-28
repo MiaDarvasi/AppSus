@@ -1,19 +1,45 @@
-export function MailHeader() {
+const { useState } = React
 
+export function MailHeader({ mails, setMails }) {
+    const [filterValue, setFilterValue] = useState('');
+
+    const handleChange = (e) => {
+        const { value } = e.target;
+        setFilterValue(value);
+        filterMails(value);
+    };
+
+    const filterMails = (value) => {
+        const filteredMails = mails.filter(mail => {
+            return (
+                mail.subject.toLowerCase().includes(value.toLowerCase()) ||
+                mail.from.toLowerCase().includes(value.toLowerCase())
+            );
+        });
+        setMails(filteredMails);
+    };
 
     return (
-        <div className="mail-header" >
+        <div className="mail-header">
             <section className="mail-header-logo">
-                <img src="/assets/img/GmailLogo.png" />
+                <img src="/assets/img/GmailLogo.png" alt="Gmail Logo" />
                 <h1>Gmail</h1>
             </section>
             <section className="mail-header-search">
-                <label htmlFor="from"><img src="/assets/img/search.svg" /></label>
-                {/* <input onChange={handleChange} value={from}
-                type="text" name="from" id="from" /> */}
+                <label htmlFor="search">
+                    <img src="/assets/img/search.svg" alt="Search Icon" />
+                </label>
                 <input
-                    type="text" name="from" id="from" />
+                    onChange={handleChange}
+                    value={filterValue}
+                    type="text"
+                    name="search"
+                    id="search"
+                    placeholder="Search"
+                />
             </section>
         </div>
-    )
+    );
 }
+
+

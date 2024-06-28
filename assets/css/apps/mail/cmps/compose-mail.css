@@ -1,7 +1,7 @@
 .compose-mail {
     position: fixed;
     bottom: 0;
-    left: 10%;
+    right: 10%;
 
     display: flex;
     flex-direction: column;
@@ -36,12 +36,15 @@
 
 .compose-mail .compose-mail-top button {
     all: unset;
-    color: rgb(91, 90, 90);
     height: 1.4rem;
+    padding: 0.3rem;
+    border-radius: 50%;
+    color: rgb(91, 90, 90);
 }
 
 .compose-mail .compose-mail-top button:hover {
     cursor: pointer;
+    background-color: rgb(222, 222, 222);
 }
 
 .compose-mail .compose-mail-top>*:last-child {

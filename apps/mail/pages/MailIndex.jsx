@@ -9,6 +9,7 @@ import { MailDetails } from '../pages/MailDetails.jsx'
 import { MailList } from '../cmps/MailList.jsx'
 import { NavBar } from '../cmps/NavBar.jsx'
 import { ComposeMail } from './ComposeMail.jsx'
+import { MailHeader } from '../cmps/MailHeader.jsx'
 
 
 
@@ -50,8 +51,9 @@ export function MailIndex() {
     if (!mails || !mails.length) return <div>Loading...</div>
     return (
         <section className="mail-main-container">
-            <NavBar />
-            <Outlet context={{ mails, onRemove: onRemoveMail }} />
+            <MailHeader mails={mails} setMails={setMails}/>
+            <NavBar mails={mails} setMails={setMails}/>
+            <Outlet context={{ mails, setMails, onRemove: onRemoveMail }} />
             {/* <ComposeMail /> */}
         </section>
     )

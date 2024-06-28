@@ -1,15 +1,14 @@
 const { useState, useEffect } = React
-const { useNavigate, useParams } = ReactRouterDOM
+const { useParams } = ReactRouterDOM
 
 import { mailService } from "../services/mail.service.js"
 import { TextboxRating } from "../cmps/TextboxRating.jsx"
 
 
-export function ComposeMail() {
+export function ComposeMail({ closeCompose, compose, mails, setMails }) {
 
     const [mailToAdd, setMailToAdd] = useState(mailService.getEmptyMail())
     const { mailId } = useParams()
-    const [compose, setCompose] = useState(true)
 
     useEffect(() => {
         if (mailId) loadMail()
@@ -28,13 +27,23 @@ export function ComposeMail() {
 
     function onSaveMail(ev) {
         ev.preventDefault()
+        if (!mailToAdd.from ||
+            !mailToAdd.to ||
+            !mailToAdd.subject ||
+            !mailToAdd.body) return
+
         mailService.save(mailToAdd)
-            .then(() => setCompose(null))
-            .catch(err => console.log('err:', err))
+            .then(() => {
+                closeCompose()
+                mailService.query()
+                    .then(updatedMails => setMails(updatedMails))
+                    .catch(err => console.log('Error fetching updated mails:', err))
+            })
+            .catch(err => console.log('Error saving mail:', err))
     }
 
     function onBack() {
-        setCompose(null)
+        closeCompose()
     }
 
 
@@ -42,9 +51,9 @@ export function ComposeMail() {
 
     return compose && <div className="compose-mail">
         <section className="compose-mail-top">
-            <button onClick={onBack}><i className="fa-solid fa-arrow-left"></i></button>
+            <button onClick={onBack} title="back"><img src="/assets/img/arrow_back.svg" /></button>
             <h1>Compose</h1>
-            <button className="btn-img-center" onClick={onSaveMail}><img src="/assets/img/send.svg" /></button>
+            <button className="btn-img-center" onClick={onSaveMail} title="send"><img src="/assets/img/send.svg" /></button>
         </section>
         <form onSubmit={onSaveMail}>
 

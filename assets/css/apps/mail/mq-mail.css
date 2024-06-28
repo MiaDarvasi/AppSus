@@ -1,0 +1,83 @@
+/* SMALL MOBILE */
+@media (max-width: 380px) {
+
+    .mail-main-container {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        background-color: var(--mail-main-bg-clr);
+    }
+
+    .mail-header {
+        grid-template-columns: 1fr 2fr;
+    }  
+}
+
+
+/* MOBILE */
+@media (min-width: 380px) {
+
+    .mail-main-container {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        background-color: var(--mail-main-bg-clr);
+    }
+
+    .mail-header {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .mail-list .mail-prev-date {
+        padding-inline-start: 2rem;
+    }
+}
+
+
+/* TABLET */
+@media (min-width: 600px) {
+
+    .mail-main-container {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        background-color: var(--mail-main-bg-clr);
+    }
+
+    .mail-header {
+        grid-template-columns: 1fr 3fr;
+    }
+}
+
+/* DESKTOPS */
+@media (min-width: 900px) {
+
+    .mail-main-container {
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+        background-color: var(--mail-main-bg-clr);
+    }
+
+    .mail-header {
+        grid-template-columns: 1fr 4fr;
+    }
+
+    .compose-mail {
+        width: 600px;
+    }
+}
+
+
+@media (min-width: 1200px) {
+
+    .mail-main-container {
+        display: grid;
+        grid-template-columns: 1fr 5fr;
+        background-color: var(--mail-main-bg-clr);
+    }
+
+    .mail-header {
+        grid-template-columns: 1fr 5fr;
+    }
+
+    .compose-mail {
+        width: 800px;
+    }
+}

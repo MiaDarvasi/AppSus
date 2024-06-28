@@ -40,7 +40,6 @@
     align-items: center;
     border-block-end: 1px solid var(--grey1);
     padding-inline-start: 0.3rem;
-    
 }
 
 .mail-list li:last-child {
@@ -51,6 +50,7 @@
 .mail-list article {
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
+    gap: 1rem;
 
     justify-content: space-between;
     align-items: center;
@@ -60,15 +60,14 @@
     padding-inline-end: 0.5rem;
 }
 
-.mail-list li:hover .mail-prev-content {
+/* .mail-list li:hover .mail-prev-content {
     margin-inline-start: 0.85rem;
-}
+} */
 
 .mail-list li:hover {
     z-index: 1;
-    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
 }
-
 
 .mail-list li:hover .mail-prev-date {
     display: none;
@@ -77,22 +76,23 @@
 .mail-list .btns-mail-prev {
     position: relative;
     display: flex;
-    gap: 0.5rem;
-    margin-inline: 1rem;
+    gap: 0.3rem;
+    margin-inline-end: 0.3rem;
+}
+
+.mail-list .mail-prev-date {
+    justify-self: end;
 }
 
 .mail-list .btns-mail-prev button {
     all: unset;
     padding: 0.3rem;
     border-radius: 50%;
-}
-
-.mail-list .btns-mail-prev button:hover {
-    background-color: rgb(229, 228, 228);
+    transition: 0.4s;
 }
 
 .mail-list .btns-mail-prev img {
-    width: 0.7rem;
+    width: 0.8rem;
 }
 
 .mail-list article>*:first-child {
@@ -136,6 +136,7 @@
 
 .mail-list .btns-mail-prev button:hover {
     cursor: pointer;
+    background-color: rgb(229, 228, 228);
 }
 
 .mail-list .is-read {
