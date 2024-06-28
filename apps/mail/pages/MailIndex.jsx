@@ -9,6 +9,7 @@ import { MailDetails } from '../pages/MailDetails.jsx'
 import { MailList } from '../cmps/MailList.jsx'
 import { NavBar } from '../cmps/NavBar.jsx'
 import { ComposeMail } from './ComposeMail.jsx'
+import { MailHeader } from '../cmps/MailHeader.jsx'
 
 
 
