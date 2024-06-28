@@ -2,7 +2,7 @@ import { NoteList } from '../cmps/NoteList.jsx'
 import { noteService } from '../services/note.service.js'
 import { NoteFilter } from '../cmps/NoteFilter.jsx'
 import { NoteInput } from '../cmps/NoteInput.jsx'
-import { NavBar } from '../cmps/navBar.jsx'
+import { NavBar } from '../cmps/NavBar.jsx'
 import { HeaderNote } from "../cmps/HeaderNote.jsx"
 const { useState, useEffect,useRef } = React
 
