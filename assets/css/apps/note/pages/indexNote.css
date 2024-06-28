@@ -1,20 +1,19 @@
 .note-index {
   overflow: hidden;
-  display: grid;
+  /* display: grid; */
+  background-color: antiquewhite;
 }
 
 
 .note-list {
-  /* margin: 20px;
-  margin-top: 10px; */
-  display: flex;
-  flex-wrap: wrap;
-  margin-inline-start: 500px;
-}
-.note-list .note-video{
- margin: 0;
- padding: 0;
- height: 0;
- width: 0px;
-}
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+grid-template-rows: 355px 250px 100px 0px;
+  grid-auto-flow: dense;
+  gap: 10px;
+  padding: 60px;
+  margin: 0 auto;
+  margin-inline-start: 200px;
+  /* width: 1040px */
 
+}

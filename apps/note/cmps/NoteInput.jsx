@@ -1,40 +1,27 @@
 const { useState } = React
 
 export function NoteInput({ onAddNote }) {
-    const [inputText, setInputText] = useState('');
+  const [text, setText] = useState('');
+  const [noteType, setNoteType] = useState('NoteTxt');
 
-    const handleInputChange = (event) => {
-        setInputText(event.target.value);
-    };
+  const handleAddNote = () => {
+    onAddNote(text, noteType);
+    setText('');
+  };
 
-    const handleAddNoteClick = () => {
-        if (inputText.trim() !== '') {
-            const newNote = {
-                id: generateUniqueId(),
-                createdAt: Date.now(),
-                type: 'NoteTxt', // Example type for text notes
-                isPinned: false,
-                style: { backgroundColor: '#fff' }, // Default background color
-                info: { txt: inputText }, // Note content
-            };
-            onAddNote(newNote); // Invoke the callback with the new note
-            setInputText(''); // Clear the input field after adding the note
-        }
-    };
-
-    const generateUniqueId = () => {
-        return Date.now().toString();
-    };
-
-    return (
-        <div className="note-input">
-            <textarea
-                placeholder="Take a note..."
-                value={inputText}
-                onChange={handleInputChange}
-                autoFocus
-            />
-            <button onClick={handleAddNoteClick}>Add</button>
-        </div>
-    );
+  return (
+    <div className="note-input">
+      <textarea
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder="Enter your note text..."
+      />
+      <select value={noteType} onChange={(e) => setNoteType(e.target.value)}>
+        <option value="NoteTxt">Text</option>
+        <option value="NoteTodos">Todos</option>
+        <option value="NoteImage">Image</option> {/* Fixed "image" to "Image" */}
+      </select>
+      <button onClick={handleAddNote}>Add Note</button>
+    </div>
+  );
 }
