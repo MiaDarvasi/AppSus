@@ -3,12 +3,16 @@
 
     .mail-main-container {
         display: grid;
-        grid-auto-flow: column;
         background-color: var(--mail-main-bg-clr);
     }
 
+    .mail-main-container.show {
+        display: grid;
+        grid-auto-flow: column;
+    }
+
     .mail-header {
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 13.2rem 1fr;
     }
 
     .mail-list article {
@@ -31,12 +35,16 @@
 
     .mail-main-container {
         display: grid;
-        grid-auto-flow: column;
         background-color: var(--mail-main-bg-clr);
     }
 
+    .mail-main-container.show {
+        display: grid;
+        grid-auto-flow: column;
+    }
+
     .mail-header {
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 13.2rem 1fr;
     }
 
     .mail-list .mail-prev-date {
@@ -62,16 +70,6 @@
 /* TABLET */
 @media (min-width: 600px) {
 
-    /* .mail-main-container {
-        display: grid;
-        grid-auto-flow: column;
-        background-color: var(--mail-main-bg-clr);
-    } */
-
-    .mail-header {
-        grid-template-columns: 1fr 3fr;
-    }
-
     .mail-list article {
         grid-template-columns: 1fr 4fr 1fr;
     }
@@ -90,16 +88,6 @@
 /* DESKTOPS */
 @media (min-width: 900px) {
 
-    /* .mail-main-container {
-        display: grid;
-        grid-template-columns: 1fr 4fr;
-        background-color: var(--mail-main-bg-clr);
-    } */
-
-    .mail-header {
-        grid-template-columns: 1fr 4fr;
-    }
-
     .compose-mail {
         left: 20rem;
         width: 600px;
@@ -112,16 +100,6 @@
 
 
 @media (min-width: 1200px) {
-
-    /* .mail-main-container {
-        display: grid;
-        grid-template-columns: 1fr 5fr;
-        background-color: var(--mail-main-bg-clr);
-    } */
-
-    .mail-header {
-        grid-template-columns: 1fr 5fr;
-    }
 
     .compose-mail {
         width: 800px;

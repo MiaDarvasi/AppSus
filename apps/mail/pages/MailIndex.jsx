@@ -17,6 +17,8 @@ export function MailIndex() {
     const [mails, setMails] = useState([])
     const [compose, setCompose] = useState(null)
     const [hideMenu, setHideMenu] = useState(false)
+    const [mailDetails, setMailDetails] = useState(false)
+
 
     useEffect(() => {
         loadMails()
@@ -47,10 +49,10 @@ export function MailIndex() {
 
     if (!mails || !mails.length) return <div className="mail-loader"></div>
     return (
-        <section className="mail-main-container">
+        <section className={`mail-main-container ${mailDetails? 'mail-details-display' : ''}`}>
             <MailHeader mails={mails} setMails={setMails} filterBy={filterBy} setFilterBy={setFilterBy} setHideMenu={setHideMenu} />
             <NavBar mails={mails} setMails={setMails} compose={compose} setCompose={setCompose} filterType={filterType} setFilterType={setFilterType} hideMenu={hideMenu}/>
-            <Outlet context={{ mails, filterBy, setMails, onRemove: onRemoveMail, compose, setCompose }} />
+            <Outlet context={{ mails, filterBy, setMails, onRemove: onRemoveMail, compose, setCompose, setMailDetails }} />
         </section>
     )
 }

@@ -6,10 +6,12 @@ import { mailService } from "../services/mail.service.js"
 
 export function MailDetails() {
 
-    const { mails, setMails, onRemove } = useOutletContext()
+    const { mails, setMails, onRemove, setMailDetails } = useOutletContext()
 
     const [mail, setMail] = useState({})
     const { mailId } = useParams()
+
+    setMailDetails(true)
 
     useEffect(() => {
         mailService.get(mailId)
@@ -28,6 +30,7 @@ export function MailDetails() {
             return mail
         })
         setMails(updatedMails)
+        setMailDetails(false)
     }
 
     function onSetArchive(mailId) {
@@ -39,6 +42,7 @@ export function MailDetails() {
             return mail
         })
         setMails(updatedMails)
+        setMailDetails(false)
     }
 
     if (!mail) return <div>Loading...</div>
