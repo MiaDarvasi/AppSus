@@ -51,11 +51,11 @@ export function getFilteredMails(filterType = 'inbox') {
             let filteredMails
 
             if (filterType === 'inbox') {
-                filteredMails = mails.filter(mail => !mail.isArchive && mail.from !== 'Momo@appsus.com')
+                filteredMails = mails.filter(mail => !mail.isArchive && !mail.isDraft && mail.from !== 'Momo@appsus.com')
             } else if (filterType === 'starred') {
                 filteredMails = mails.filter(mail => mail.isStarred)
             } else if (filterType === 'sent') {
-                filteredMails = mails.filter(mail => mail.from === 'Momo@appsus.com')
+                filteredMails = mails.filter(mail => !mail.isArchive && !mail.isDraft && mail.from === 'Momo@appsus.com')
             } else if (filterType === 'archive') {
                 filteredMails = mails.filter(mail => mail.isArchive)
             } else if (filterType === 'draft') {

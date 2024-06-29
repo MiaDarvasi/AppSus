@@ -114,8 +114,8 @@ export function MailList() {
                         {hoveredItemId === mail.id && (
                             <section className="btns-mail-prev">
                                 <button onClick={() => onRemove(mail.id)} title="Trash"><img src="./assets/img/trash.svg" /></button>
-                                <button onClick={() => onSetArchive(mail.id)} title="Archive"><img src="./assets/img/archive.svg" /></button>
-                                <button onClick={() => onSetUnread(mail.id)} title="Set Unread"><img src="./assets/img/unread.svg" /></button>
+                                {!mail.isArchive && (<button onClick={() => onSetArchive(mail.id)} title="Archive"><img src="./assets/img/archive.svg" /></button>)}
+                                {!mail.isArchive && (<button onClick={() => onSetUnread(mail.id)} title="Set Unread"><img src="./assets/img/unread.svg" /></button>)}
                             </section>)}
                     </li>
                 )}

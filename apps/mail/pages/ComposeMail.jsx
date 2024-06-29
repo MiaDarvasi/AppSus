@@ -1,12 +1,13 @@
 const { useState, useEffect } = React
-const { useParams } = ReactRouterDOM
+const { useParams, useNavigate } = ReactRouterDOM
 
 import { mailService } from "../services/mail.service.js"
 
-export function ComposeMail({ closeCompose, compose, mails, setMails }) {
+export function ComposeMail({ closeCompose, compose, mails, setMails, setFilterType }) {
 
     const [mailToAdd, setMailToAdd] = useState(mailService.getEmptyMail())
     const { mailId } = useParams()
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (mailId) loadMail()
@@ -34,7 +35,11 @@ export function ComposeMail({ closeCompose, compose, mails, setMails }) {
             .then(() => {
                 closeCompose()
                     mailService.query()
-                    .then(updatedMails => setMails(updatedMails))
+                    .then(updatedMails => {
+                        setMails(updatedMails)
+                        setFilterType('inbox')
+                        navigate("/mail/inbox")
+                    })
                     .catch(err => console.log('Error fetching updated mails:', err))
             })
             .catch(err => console.log('Error saving mail:', err))

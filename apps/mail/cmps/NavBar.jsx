@@ -7,7 +7,6 @@ const { useState, useEffect } = React
 
 export function NavBar({ mails, setMails, compose, setCompose }) {
 
-    // const [compose, setCompose] = useState(null)
     const [filterType, setFilterType] = useState('inbox')
 
     useEffect(() => {
@@ -69,7 +68,7 @@ export function NavBar({ mails, setMails, compose, setCompose }) {
                     <img src="./assets/img/archive.svg" />Archive
                 </button>
             </section>
-            {compose && <ComposeMail closeCompose={onCloseCompose} compose={compose} mails={mails} setMails={setMails} />}
+            {compose && <ComposeMail closeCompose={onCloseCompose} compose={compose} mails={mails} setMails={setMails} setFilterType={setFilterType}/>}
         </div>
     )
 }
