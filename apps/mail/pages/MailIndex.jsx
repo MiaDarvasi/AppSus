@@ -15,6 +15,8 @@ import { MailHeader } from '../cmps/MailHeader.jsx'
 
 export function MailIndex() {
     const [filterBy, setFilterBy] = useState({ txt: '' })
+    const [filterType, setFilterType] = useState('inbox')
+
     const [mails, setMails] = useState([])
     const [compose, setCompose] = useState(null)
 
@@ -31,7 +33,8 @@ export function MailIndex() {
             })
     }
 
-    function onRemoveMail(mailId) {
+    function onRemoveMail(mailId, event) {
+        event.stopPropagation()
         mailService.remove(mailId)
             .then(() => {
                 setMails(mails =>
@@ -48,7 +51,7 @@ export function MailIndex() {
     return (
         <section className="mail-main-container">
             <MailHeader mails={mails} setMails={setMails} filterBy={filterBy} setFilterBy={setFilterBy} />
-            <NavBar mails={mails} setMails={setMails} compose={compose} setCompose={setCompose}/>
+            <NavBar mails={mails} setMails={setMails} compose={compose} setCompose={setCompose} filterType={filterType} setFilterType={setFilterType}/>
             <Outlet context={{ mails, filterBy, setMails, onRemove: onRemoveMail, compose, setCompose }} />
             {/* <ComposeMail /> */}
         </section>

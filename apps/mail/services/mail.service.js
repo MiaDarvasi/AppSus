@@ -18,6 +18,7 @@ export const mailService = {
     getDefaultFilter,
     toggleStarred,
     setArchive,
+    setUnArchive,
     setUnread,
     setRead,
     setDraft,
@@ -117,6 +118,14 @@ function setArchive(mailId) {
     storageService.get(MAIL_KEY, mailId)
         .then(mail => {
             mail.isArchive = true
+            return storageService.put(MAIL_KEY, mail)
+        })
+}
+
+function setUnArchive(mailId) {
+    storageService.get(MAIL_KEY, mailId)
+        .then(mail => {
+            mail.isArchive = false
             return storageService.put(MAIL_KEY, mail)
         })
 }

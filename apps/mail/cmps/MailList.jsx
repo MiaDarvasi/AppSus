@@ -21,8 +21,9 @@ export function MailList() {
         setMails(updatedMails)
     }
 
-    function onSetArchive(mailId) {
-        mailService.setArchive(mailId)
+    function onSetArchive(mailId, event) {
+        event.stopPropagation()
+        mailService.setUnArchive(mailId)
         const updatedMails = mails.map(mail => {
             if (mail.id === mailId) {
                 return { ...mail, isArchive: true }
@@ -32,7 +33,21 @@ export function MailList() {
         setMails(updatedMails)
     }
 
-    function onSetUnread(mailId) {
+    function onSetUnArchive(mailId, event) {
+        event.stopPropagation()
+        mailService.setUnArchive(mailId)
+        const updatedMails = mails.map(mail => {
+            if (mail.id === mailId) {
+                return { ...mail, isArchive: false }
+            }
+            return mail
+        })
+        setMails(updatedMails)
+    }
+
+
+    function onSetUnread(mailId, event) {
+        event.stopPropagation()
         mailService.setUnread(mailId)
         const updatedMails = mails.map(mail => {
             if (mail.id === mailId) {
@@ -113,9 +128,10 @@ export function MailList() {
                         </Link>
                         {hoveredItemId === mail.id && (
                             <section className="btns-mail-prev">
-                                <button onClick={() => onRemove(mail.id)} title="Trash"><img src="./assets/img/trash.svg" /></button>
-                                {!mail.isArchive && (<button onClick={() => onSetArchive(mail.id)} title="Archive"><img src="./assets/img/archive.svg" /></button>)}
-                                {!mail.isArchive && (<button onClick={() => onSetUnread(mail.id)} title="Set Unread"><img src="./assets/img/unread.svg" /></button>)}
+                                <button onClick={(event) => { event.stopPropagation(); onRemove(mail.id, event); }} title="Trash"><img src="./assets/img/trash.svg" /></button>
+                                {mail.isArchive && (<button onClick={(event) => { event.stopPropagation(); onSetUnArchive(mail.id, event); }} title="Move To Inbox"><img src="./assets/img/move_to_inbox.svg" /></button>)}
+                                {!mail.isArchive && (<button onClick={(event) => { event.stopPropagation(); onSetArchive(mail.id, event); }} title="Archive"><img src="./assets/img/archive.svg" /></button>)}
+                                {!mail.isArchive && (<button onClick={(event) => { event.stopPropagation(); onSetUnread(mail.id, event); }} title="Set Unread"><img src="./assets/img/unread.svg" /></button>)}
                             </section>)}
                     </li>
                 )}
