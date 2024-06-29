@@ -44,6 +44,7 @@
     color: white;
     padding: 0.5rem;
     padding-block: 0.3rem;
+    margin-inline-start: 0.3rem;
     border-radius: 50%;
     font-family: lato-light;
     font-size: 1.3rem;

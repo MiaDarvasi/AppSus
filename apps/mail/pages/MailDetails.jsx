@@ -11,12 +11,12 @@ export function MailDetails() {
     const [mail, setMail] = useState({})
     const { mailId } = useParams()
 
-    setMailDetails(true)
 
     useEffect(() => {
         mailService.get(mailId)
             .then(mail => {
                 setMail(mail)
+                setMailDetails(true)
                 onSetRead(mail.id)
             })
     }, [mailId])
