@@ -13,6 +13,7 @@ export function MailHeader({ mails, setMails, filterBy, setFilterBy }) {
                 <img src="./assets/img/GmailLogo.png" alt="Gmail Logo" />
                 <h1>Gmail</h1>
             </section>
+            <section className="mail-header-content">
             <section className="mail-header-search">
                 <label htmlFor="search">
                     <img src="./assets/img/search.svg" alt="Search Icon" />
@@ -25,6 +26,8 @@ export function MailHeader({ mails, setMails, filterBy, setFilterBy }) {
                     id="search"
                     placeholder="Search"
                 />
+            </section>
+            <div className="mail-header-user">M</div>
             </section>
         </div>
     );

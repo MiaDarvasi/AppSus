@@ -21,6 +21,7 @@ export const mailService = {
     setUnread,
     setRead,
     setDraft,
+    setUnDraft,
     getFilteredMails,
 }
 
@@ -63,7 +64,7 @@ export function getFilteredMails(filterType = 'inbox') {
                 filteredMails = mails
             }
 
-            return filteredMails
+            return ((filteredMails || filteredMails.length) ? filteredMails : [])
         })
         .catch(error => {
             console.error('Error querying mails:', error);
@@ -144,6 +145,15 @@ function setDraft(mail) {
         })
 }
 
+function setUnDraft(mailId) {
+    storageService.get(MAIL_KEY, mailId)
+        .then(mail => {
+            mail.isDraft = false
+            return storageService.put(MAIL_KEY, mail)
+        })
+}
+
+
 
 function _createMails() {
     let mails = _loadFromStorage(MAIL_KEY)
@@ -151,9 +161,10 @@ function _createMails() {
     if (!mails || !mails.length) {
         mails = []
 
-        for (let i = 0; i < 40; i++) {
+        for (let i = 0; i < 100; i++) {
             const fromIsUser = Math.random() > 0.7
             const toIsUser = !fromIsUser
+            const isStarred = Math.random() > 0.8
             const mail = {
                 id: utilService.makeId(),
                 createdAt: _getRandomDate(),
@@ -163,10 +174,10 @@ function _createMails() {
                 removedAt: null,
                 from: fromIsUser ? 'Momo@appsus.com' : `${_makeName()}@appsus.com`,
                 to: toIsUser ? 'Momo@appsus.com' : `${_makeName()}@appsus.com`,
-                isStarred: Math.random() > 0.7,
-                isRead: Math.random() < 0.5,
-                isArchive: false,
-                isDraft: false,
+                isStarred: isStarred,
+                isRead: fromIsUser? true : Math.random() > 0.5,
+                isArchive: isStarred? false : Math.random() > 0.8,
+                isDraft: (fromIsUser && !isStarred) ? Math.random() > 0.8 : false,
             }
             mails.push(mail)
         }

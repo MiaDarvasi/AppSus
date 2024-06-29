@@ -33,7 +33,7 @@ export function ComposeMail({ closeCompose, compose, mails, setMails }) {
         mailService.save(mailToAdd)
             .then(() => {
                 closeCompose()
-                mailService.query()
+                    mailService.query()
                     .then(updatedMails => setMails(updatedMails))
                     .catch(err => console.log('Error fetching updated mails:', err))
             })
@@ -46,11 +46,6 @@ export function ComposeMail({ closeCompose, compose, mails, setMails }) {
             mailService.setDraft(mailToAdd)
         }
         closeCompose()
-    }
-
-    function onSetTxt(newTxt) {
-        setTextValue(newTxt)
-        handleChange({ target: { name: 'body', value: newTxt } })
     }
 
 
@@ -77,13 +72,13 @@ export function ComposeMail({ closeCompose, compose, mails, setMails }) {
                 type="text" name="subject" id="subject" />
 
             <textarea
-            onChange={handleChange} 
-            value={body}
-            type="text" 
-            name='body'
-            id="body"
-            rows='20'
-        ></textarea>
+                onChange={handleChange}
+                value={body}
+                type="text"
+                name='body'
+                id="body"
+                rows='20'
+            ></textarea>
 
         </form>
     </div>
