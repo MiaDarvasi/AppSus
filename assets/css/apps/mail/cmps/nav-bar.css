@@ -11,17 +11,20 @@
 .nav-bar .btn-compose {
     display: flex;
     gap: 1rem;
-    max-width: 9rem;
+
+    align-self: start;
 
     padding: 1rem;
     background-color: #C2E7FF;
-    border-radius: 15px;
+
     border: none;
+    border-radius: 20px;
     margin-inline: 0.3rem;
     margin-block-end: 1rem;
     font-family: lato-reg;
     font-size: 1rem;
     color: rgb(69, 69, 69);
+    transition: 0.4s;
 }
 
 .nav-bar .btn-compose:hover {
@@ -42,16 +45,17 @@
     display: flex;
     gap: 1rem;
 
+    align-self: start;
+
     cursor: pointer;
 
     padding: 0.5rem;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    padding-inline-start: 1rem;
+    margin-inline-start: 0.7rem ;
+    border-radius: 50%;
 
     font-family: lato-reg;
     color: rgb(69, 69, 69);
-    transition: 0.4s;
+    transition: background-color 0.4s;
 }
 
 .nav-bar .nav-btns button:hover {
@@ -62,6 +66,46 @@
     display: inline;
     width: 1.2rem;
 }
+
+.nav-bar .btn-compose.show {
+    border-radius: 20px;
+}
+
+.nav-bar .btn-compose.show::after {
+    content: 'Compose';
+}
+
+.nav-bar .nav-btns button.show {
+    align-self: stretch;
+    width: 12rem;
+    border-radius: 0;
+    margin-inline-start: 0;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding-inline-start: 1rem;
+
+}
+
+.nav-bar .nav-btns button.show:first-child::after {
+    content: 'Inbox';
+}
+
+.nav-bar .nav-btns button.show:nth-child(2)::after {
+    content: 'Starred';
+}
+
+.nav-bar .nav-btns button.show:nth-child(3)::after {
+    content: 'Sent';
+}
+
+.nav-bar .nav-btns button.show:nth-child(4)::after {
+    content: 'Drafts';
+}
+
+.nav-bar .nav-btns button.show:nth-child(5)::after {
+    content: 'Archive';
+}
+
 
 .nav-btns button.selected {
     background-color: #D3E3FD;

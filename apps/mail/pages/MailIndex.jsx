@@ -5,10 +5,7 @@ const Router = ReactRouterDOM.HashRouter
 const { Route, Routes, Outlet } = ReactRouterDOM
 
 import { mailService } from '../services/mail.service.js'
-import { MailDetails } from '../pages/MailDetails.jsx'
-import { MailList } from '../cmps/MailList.jsx'
 import { NavBar } from '../cmps/NavBar.jsx'
-import { ComposeMail } from './ComposeMail.jsx'
 import { MailHeader } from '../cmps/MailHeader.jsx'
 
 
@@ -19,6 +16,7 @@ export function MailIndex() {
 
     const [mails, setMails] = useState([])
     const [compose, setCompose] = useState(null)
+    const [hideMenu, setHideMenu] = useState(false)
 
     useEffect(() => {
         loadMails()
@@ -50,10 +48,9 @@ export function MailIndex() {
     if (!mails || !mails.length) return <div className="mail-loader"></div>
     return (
         <section className="mail-main-container">
-            <MailHeader mails={mails} setMails={setMails} filterBy={filterBy} setFilterBy={setFilterBy} />
-            <NavBar mails={mails} setMails={setMails} compose={compose} setCompose={setCompose} filterType={filterType} setFilterType={setFilterType}/>
+            <MailHeader mails={mails} setMails={setMails} filterBy={filterBy} setFilterBy={setFilterBy} setHideMenu={setHideMenu} />
+            <NavBar mails={mails} setMails={setMails} compose={compose} setCompose={setCompose} filterType={filterType} setFilterType={setFilterType} hideMenu={hideMenu}/>
             <Outlet context={{ mails, filterBy, setMails, onRemove: onRemoveMail, compose, setCompose }} />
-            {/* <ComposeMail /> */}
         </section>
     )
 }

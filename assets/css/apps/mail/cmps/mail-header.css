@@ -5,7 +5,7 @@
     grid-column: 1 / span 2;
     display: grid;
     align-items: center;
-    padding-inline: 1rem;
+    padding-inline: 0.7rem;
     background-color: var(--mail-main-bg-clr);
 }
 
@@ -13,6 +13,30 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.mail-header button {
+    all: unset;
+    height: 1.6rem;
+    padding: 0.3rem;
+    border-radius: 50%;
+}
+
+.mail-header button:hover {
+    background-color: rgb(229, 230, 231);
+}
+
+.mail-header button img {
+    height: 1.6rem;
+}
+
+.mail-header .mail-header-start {
+    display: flex;
+    gap: 0.5rem;
+
+    width: 13.2rem;
+    justify-content: start;
+    place-items: center;
 }
 
 .mail-header-user {
@@ -31,7 +55,7 @@
     align-items: end;
 
     padding: 1rem;
-    padding-inline-start: 0.5rem;
+    padding-inline-start: 0.7rem;
     font-family: lato-light;
     font-size: 1.3rem;
 }

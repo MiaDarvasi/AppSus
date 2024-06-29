@@ -174,6 +174,7 @@ function _createMails() {
             const fromIsUser = Math.random() > 0.7
             const toIsUser = !fromIsUser
             const isStarred = Math.random() > 0.8
+            const isArchive = isStarred? false : Math.random() > 0.8
             const mail = {
                 id: utilService.makeId(),
                 createdAt: _getRandomDate(),
@@ -185,8 +186,8 @@ function _createMails() {
                 to: toIsUser ? 'Momo@appsus.com' : `${_makeName()}@appsus.com`,
                 isStarred: isStarred,
                 isRead: fromIsUser? true : Math.random() > 0.5,
-                isArchive: isStarred? false : Math.random() > 0.8,
-                isDraft: (fromIsUser && !isStarred) ? Math.random() > 0.8 : false,
+                isArchive: isArchive,
+                isDraft: (fromIsUser && !isStarred && !isArchive) ? Math.random() > 0.8 : false,
             }
             mails.push(mail)
         }

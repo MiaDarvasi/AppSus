@@ -31,10 +31,12 @@ export function ComposeMail({ closeCompose, compose, mails, setMails, setFilterT
             !mailToAdd.subject ||
             !mailToAdd.body) return
 
+        mailToAdd.isDraft = false
+        mailToAdd.createdAt = Date.now()
         mailService.save(mailToAdd)
             .then(() => {
                 closeCompose()
-                    mailService.query()
+                mailService.query()
                     .then(updatedMails => {
                         setMails(updatedMails)
                         setFilterType('inbox')
@@ -51,6 +53,7 @@ export function ComposeMail({ closeCompose, compose, mails, setMails, setFilterT
             mailService.setDraft(mailToAdd)
         }
         closeCompose()
+        navigate("/mail/inbox")
     }
 
 

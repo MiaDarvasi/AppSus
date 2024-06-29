@@ -3,7 +3,7 @@
 
     .mail-main-container {
         display: grid;
-        grid-template-columns: 1fr 2fr;
+        grid-auto-flow: column;
         background-color: var(--mail-main-bg-clr);
     }
 
@@ -31,7 +31,7 @@
 
     .mail-main-container {
         display: grid;
-        grid-template-columns: 1fr 2fr;
+        grid-auto-flow: column;
         background-color: var(--mail-main-bg-clr);
     }
 
@@ -62,11 +62,11 @@
 /* TABLET */
 @media (min-width: 600px) {
 
-    .mail-main-container {
+    /* .mail-main-container {
         display: grid;
-        grid-template-columns: 1fr 3fr;
+        grid-auto-flow: column;
         background-color: var(--mail-main-bg-clr);
-    }
+    } */
 
     .mail-header {
         grid-template-columns: 1fr 3fr;
@@ -90,11 +90,11 @@
 /* DESKTOPS */
 @media (min-width: 900px) {
 
-    .mail-main-container {
+    /* .mail-main-container {
         display: grid;
         grid-template-columns: 1fr 4fr;
         background-color: var(--mail-main-bg-clr);
-    }
+    } */
 
     .mail-header {
         grid-template-columns: 1fr 4fr;
@@ -113,11 +113,11 @@
 
 @media (min-width: 1200px) {
 
-    .mail-main-container {
+    /* .mail-main-container {
         display: grid;
         grid-template-columns: 1fr 5fr;
         background-color: var(--mail-main-bg-clr);
-    }
+    } */
 
     .mail-header {
         grid-template-columns: 1fr 5fr;
