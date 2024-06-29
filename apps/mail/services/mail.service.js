@@ -49,7 +49,7 @@ export function getFilteredMails(filterType = 'inbox') {
             let filteredMails
 
             if (filterType === 'inbox') {
-                filteredMails = mails.filter(mail => !mail.isArchive)
+                filteredMails = mails.filter(mail => !mail.isArchive && mail.from !== 'Momo@appsus.com')
             } else if (filterType === 'starred') {
                 filteredMails = mails.filter(mail => mail.isStarred)
             } else if (filterType === 'sent') {
@@ -60,7 +60,6 @@ export function getFilteredMails(filterType = 'inbox') {
                 filteredMails = mails
             }
 
-            console.log(filteredMails)
             return filteredMails
         })
         .catch(error => {
@@ -93,6 +92,7 @@ function getEmptyMail(subject = '', body = '', to = '', from = '') {
         to,
         isStarred: false,
         isArchive: false,
+        isDraft: true,
     }
 }
 
@@ -105,7 +105,7 @@ function toggleStarred(mailId) {
         .then(mail => {
             mail.isStarred = !mail.isStarred
             return storageService.put(MAIL_KEY, mail)
-        });
+        })
 
 }
 
@@ -114,7 +114,7 @@ function setArchive(mailId) {
         .then(mail => {
             mail.isArchive = true
             return storageService.put(MAIL_KEY, mail);
-        });
+        })
 }
 
 function setUnread(mailId) {
@@ -122,7 +122,7 @@ function setUnread(mailId) {
         .then(mail => {
             mail.isRead = false
             return storageService.put(MAIL_KEY, mail);
-        });
+        })
 }
 
 function setRead(mailId) {
@@ -130,7 +130,7 @@ function setRead(mailId) {
         .then(mail => {
             mail.isRead = true
             return storageService.put(MAIL_KEY, mail);
-        });
+        })
 }
 
 
@@ -155,6 +155,7 @@ function _createMails() {
                 isStarred: Math.random() > 0.7,
                 isRead: Math.random() < 0.5,
                 isArchive: false,
+                isDraft: false,
             }
             mails.push(mail)
         }

@@ -43,7 +43,7 @@ export function MailIndex() {
     }
 
 
-    if (!mails || !mails.length) return <div>Loading...</div>
+    if (!mails || !mails.length) return <div className="mail-loader"></div>
     return (
         <section className="mail-main-container">
             <MailHeader mails={mails} setMails={setMails} filterBy={filterBy} setFilterBy={setFilterBy} />

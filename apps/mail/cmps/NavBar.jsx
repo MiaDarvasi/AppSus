@@ -30,7 +30,6 @@ export function NavBar({ mails, setMails }) {
 
     function onChangeFilterType(filterType) {
         setFilterType(filterType)
-        console.log(filterType)
     }
 
     return (

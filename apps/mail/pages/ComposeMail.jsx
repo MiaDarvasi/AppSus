@@ -31,13 +31,17 @@ export function ComposeMail({ closeCompose, compose, mails, setMails }) {
             !mailToAdd.subject ||
             !mailToAdd.body) return
 
-        mailService.save(mailToAdd)
-            .then(() => {
-                closeCompose()
-                mailService.query()
-                    .then(updatedMails => setMails(updatedMails))
-                    .catch(err => console.log('Error fetching updated mails:', err))
-            })
+        mailService.setIsNotDraft(mailToAdd.id).then(() => {
+            mailService.save(mailToAdd)
+                .then(() => {
+                    closeCompose()
+                    console.log(mailToAdd)
+                    mailService.query()
+                        .then(updatedMails => setMails(updatedMails))
+                        .catch(err => console.log('Error fetching updated mails:', err))
+                })
+
+        })
             .catch(err => console.log('Error saving mail:', err))
     }
 
