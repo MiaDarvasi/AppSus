@@ -2,7 +2,6 @@ const { useState, useEffect } = React
 const { useParams } = ReactRouterDOM
 
 import { mailService } from "../services/mail.service.js"
-import { TextboxRating } from "../cmps/TextboxRating.jsx"
 
 export function ComposeMail({ closeCompose, compose, mails, setMails }) {
 
@@ -31,22 +30,27 @@ export function ComposeMail({ closeCompose, compose, mails, setMails }) {
             !mailToAdd.subject ||
             !mailToAdd.body) return
 
-        mailService.setIsNotDraft(mailToAdd.id).then(() => {
-            mailService.save(mailToAdd)
-                .then(() => {
-                    closeCompose()
-                    console.log(mailToAdd)
-                    mailService.query()
-                        .then(updatedMails => setMails(updatedMails))
-                        .catch(err => console.log('Error fetching updated mails:', err))
-                })
-
-        })
+        mailService.save(mailToAdd)
+            .then(() => {
+                closeCompose()
+                mailService.query()
+                    .then(updatedMails => setMails(updatedMails))
+                    .catch(err => console.log('Error fetching updated mails:', err))
+            })
             .catch(err => console.log('Error saving mail:', err))
     }
 
     function onBack() {
+        if (mailToAdd.from && mailToAdd.to ||
+            mailToAdd.subject || mailToAdd.body) {
+            mailService.setDraft(mailToAdd)
+        }
         closeCompose()
+    }
+
+    function onSetTxt(newTxt) {
+        setTextValue(newTxt)
+        handleChange({ target: { name: 'body', value: newTxt } })
     }
 
 
@@ -72,7 +76,14 @@ export function ComposeMail({ closeCompose, compose, mails, setMails }) {
             <input onChange={handleChange} value={subject}
                 type="text" name="subject" id="subject" />
 
-            <TextboxRating handleChange={handleChange} txt={body} />
+            <textarea
+            onChange={handleChange} 
+            value={body}
+            type="text" 
+            name='body'
+            id="body"
+            rows='20'
+        ></textarea>
 
         </form>
     </div>

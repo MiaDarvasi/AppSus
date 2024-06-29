@@ -77,7 +77,7 @@
 
 .mail-list .mail-prev-date {
     position: absolute;
-    justify-self: end;
+    right: 1rem;
 }
 
 .mail-list .btns-mail-prev button {

@@ -5,9 +5,9 @@ import { mailService } from "../services/mail.service.js"
 const { useState, useEffect } = React
 
 
-export function NavBar({ mails, setMails }) {
+export function NavBar({ mails, setMails, compose, setCompose }) {
 
-    const [compose, setCompose] = useState(null)
+    // const [compose, setCompose] = useState(null)
     const [filterType, setFilterType] = useState('inbox')
 
     useEffect(() => {
@@ -55,6 +55,12 @@ export function NavBar({ mails, setMails }) {
                     className={`${(filterType === 'sent') ? 'selected' : ''}`}
                     onClick={() => onChangeFilterType('sent')}>
                     <img src="./assets/img/send.svg" />Sent
+                </button>
+                <button
+                    value="draft"
+                    className={`${(filterType === 'draft') ? 'selected' : ''}`}
+                    onClick={() => onChangeFilterType('draft')}>
+                    <img src="./assets/img/drafts.svg" />Drafts
                 </button>
                 <button
                     value="archive"

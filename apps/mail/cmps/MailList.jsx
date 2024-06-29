@@ -5,7 +5,7 @@ const { Link, useOutletContext } = ReactRouterDOM
 const { useState } = React
 
 export function MailList() {
-    const { mails, setMails, filterBy, onRemove } = useOutletContext()
+    const { mails, setMails, filterBy, onRemove, compose, setCompose } = useOutletContext()
     const [hoveredItemId, setHoveredItemId] = useState(null)
     const [sortBy, setSortBy] = useState('latest')
     const [filterType, setFilterType] = useState('all')
@@ -73,6 +73,10 @@ export function MailList() {
         return sortedMails
     }
 
+    function displayDraft(mail) {
+        if (mail.isDraft) setCompose(true)
+    }
+
     const filteredMails = getFilteredMails()
 
     if (!filteredMails) return <div className="mail-loader"></div>
@@ -95,6 +99,7 @@ export function MailList() {
                 {getMailsForDisplay(filteredMails, filterBy).map(mail =>
                     <li key={mail.id}
                         className={(mail.isRead) ? 'is-read' : ''}
+                        onClick={() => displayDraft(mail)}
                         onMouseEnter={() => setHoveredItemId(mail.id)}
                         onMouseLeave={() => setHoveredItemId(null)}>
                         <span className='star'

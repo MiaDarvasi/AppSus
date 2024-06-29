@@ -20,6 +20,7 @@ export const mailService = {
     setArchive,
     setUnread,
     setRead,
+    setDraft,
     getFilteredMails,
 }
 
@@ -56,6 +57,8 @@ export function getFilteredMails(filterType = 'inbox') {
                 filteredMails = mails.filter(mail => mail.from === 'Momo@appsus.com')
             } else if (filterType === 'archive') {
                 filteredMails = mails.filter(mail => mail.isArchive)
+            } else if (filterType === 'draft') {
+                filteredMails = mails.filter(mail => mail.isDraft)
             } else {
                 filteredMails = mails
             }
@@ -92,7 +95,7 @@ function getEmptyMail(subject = '', body = '', to = '', from = '') {
         to,
         isStarred: false,
         isArchive: false,
-        isDraft: true,
+        isDraft: false,
     }
 }
 
@@ -113,7 +116,7 @@ function setArchive(mailId) {
     storageService.get(MAIL_KEY, mailId)
         .then(mail => {
             mail.isArchive = true
-            return storageService.put(MAIL_KEY, mail);
+            return storageService.put(MAIL_KEY, mail)
         })
 }
 
@@ -121,7 +124,7 @@ function setUnread(mailId) {
     storageService.get(MAIL_KEY, mailId)
         .then(mail => {
             mail.isRead = false
-            return storageService.put(MAIL_KEY, mail);
+            return storageService.put(MAIL_KEY, mail)
         })
 }
 
@@ -129,7 +132,15 @@ function setRead(mailId) {
     storageService.get(MAIL_KEY, mailId)
         .then(mail => {
             mail.isRead = true
-            return storageService.put(MAIL_KEY, mail);
+            return storageService.put(MAIL_KEY, mail)
+        })
+}
+
+function setDraft(mail) {
+    mail.isDraft = true
+    save(mail)
+        .then((mail) => {
+            return storageService.put(MAIL_KEY, mail)
         })
 }
 
