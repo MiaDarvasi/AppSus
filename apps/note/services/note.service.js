@@ -52,6 +52,7 @@ export async function initializeNotes() {
         backgroundColor: ''
       },
       info: {
+        title: 'Sample video',
         videoUrl: 'https://res.cloudinary.com/demo/image/upload/kitten_fighting.mp4',
         autoplay: true,
         loop: true

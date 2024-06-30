@@ -1,19 +1,15 @@
 .note-index {
   overflow: hidden;
   background-color: white;
-  /* display: grid; */
 }
-
 
 .note-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-grid-template-rows: 400px 250px 100px 0px;
+  grid-template-rows: 400px 200px auto auto;
   grid-auto-flow: dense;
-  gap: 10px;
+  gap: 5px;
   padding: 60px;
   margin: 0 auto;
   margin-inline-start: 200px;
-  /* width: 1040px */
-
 }

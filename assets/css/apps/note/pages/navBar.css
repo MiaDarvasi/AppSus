@@ -1,41 +1,32 @@
-.btn-Notes {
-  display: flex;
-  width: 180px;
-  padding: 10px;
-  border-bottom-right-radius: 100px;
-  border-top-right-radius: 100px;
-  align-items: center;
-  color: #929292;
-  background-color: #fff4b9;
-  margin-bottom: 10px;
-  margin-top: 5px;
-  gap: 50px;
-  font-family: lato-reg;
-  font-size: 14px;
-}
-
-.btn-Notes img {
-  width: 25px;
-}
-
+.btn-Notes,
 .btn-categories {
   display: flex;
   width: 180px;
   padding: 10px;
   border-bottom-right-radius: 100px;
   border-top-right-radius: 100px;
-  gap: 50px;
   align-items: center;
   color: #929292;
-  background-color: #ffffff;
-  margin-bottom: 10px;
   font-family: lato-reg;
   font-size: 14px;
-
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
 }
 
+.btn-Notes img,
 .btn-categories img {
   width: 25px;
+}
+
+.btn-categories,.btn-Notes {
+  background-color: #ffffff;
+  gap: 50px;
+  margin-bottom: 10px;
+}
+
+.btn-Notes {
+  background-color: #fff4b9;
+  margin-top: 5px;
 }
 
 .btn-categories:hover {
@@ -49,5 +40,20 @@
 .nav-bar-categories {
   position: absolute;
   height: 100%;
-  margin-top: -29px;
+  left: -248px;
+}
+.nav-bar-wrapper {
+  position: sticky;
+  
+  width: 250px;
+  height: 100%;
+  background-color: #ffffff;
+  transition: transform 0.3s ease-in-out; 
+}
+.nav-bar-wrapper.open {
+  transform: translateX(250px); 
+}
+
+.nav-bar-wrapper.closed {
+  transform: translateX(-250px); 
 }

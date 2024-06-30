@@ -113,25 +113,27 @@ export function NoteIndex() {
     const newNote = {
       id: generateUniqueId(),
       createdAt: Date.now(),
-      type: type, 
+      type: type,
       isPinned: false,
       style: { backgroundColor: '' },
-      info: type === 'NoteTodos' ? { title: '', todos: [] } : { txt: text }, 
+      info: type === 'NoteTodos' ? { title: '', todos: [] } : { txt: text },
     }
     const updatedNotes = [...notes, newNote]
     setNotes(updatedNotes)
     setFilteredNotes(updatedNotes)
   }
- 
+
   return (
     <div className="note-index">
       <HeaderNote />
-      <button className="refresh-button" onClick={fetchNotes}><img src="assets/img/replay_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
-      <button className="view-button"><img src="assets/img/view_agenda_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
-      <button className="settings-button"><img src="assets/img/settings_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
-      <button className="apps-button"><img src="assets/img/apps_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
-      <div className="user">s</div>
-      <NavBar />
+      <div className="btn-header">
+        <button className="refresh-button" title="refresh" onClick={fetchNotes}><img src="assets/img/refresh_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
+        <button className="view-button"><img src="assets/img/view_agenda_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
+        <button className="settings-button"><img src="assets/img/settings_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
+        <button className="apps-button"><img src="assets/img/apps_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
+        <div className="user">s</div>
+      </div>
+      {/* <NavBar /> */}
       <NoteFilter filterBy={filterBy} clearFilters={clearFilters} />
       <NoteInput onAddNote={handleAddNote} />
       <NoteList

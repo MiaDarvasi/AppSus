@@ -6,50 +6,38 @@ import { NoteAudio } from './NoteAudio.jsx'
 import { NoteCanvas } from './NoteCanvas.jsx'
 import { NoteMap } from './NoteMap.jsx'
 
-const { useState, useRef } = React
+const { useState } = React
 
 const componentMap = {
-  NoteTxt: NoteTxt,
-  NoteTodos: NoteTodos,
-  NoteImg: NoteImg,
-  NoteVideo: NoteVideo,
-  NoteAudio: NoteAudio,
-  NoteCanvas: NoteCanvas,
-  NoteMap: NoteMap,
+  NoteTxt,
+  NoteTodos,
+  NoteImg,
+  NoteVideo,
+  NoteAudio,
+  NoteCanvas,
+  NoteMap,
 }
 
 export function NotePreview({ note, updateNoteColor, toggleNotePinned, deleteNote, duplicateNote, updateNote }) {
-  const [isEditing, setIsEditing] = React.useState(false)
-  const [editedContent, setEditedContent] = React.useState(note.info.txt || '')
-  const [newTodoText, setNewTodoText] = React.useState('')
-  const [isColorMenuOpen, setIsColorMenuOpen] = React.useState(false)
+  const [isEditing, setIsEditing] = useState(false)
+  const [editedContent, setEditedContent] = useState(note.info.txt || '')
+  const [newTodoText, setNewTodoText] = useState('')
+  const [isColorMenuOpen, setIsColorMenuOpen] = useState(false)
 
   const handleColorChange = (color) => {
     updateNoteColor(note.id, color)
     setIsColorMenuOpen(false)
   }
 
-  const handlePinToggle = () => {
-    toggleNotePinned(note.id)
-  }
-
-  const handleDelete = () => {
-    deleteNote(note.id)
-  }
-
-  const handleDuplicate = () => {
-    duplicateNote(note.id)
-  }
-
+  const handlePinToggle = () => toggleNotePinned(note.id)
+  const handleDelete = () => deleteNote(note.id)
+  const handleDuplicate = () => duplicateNote(note.id)
   const toggleEdit = () => {
     setIsEditing(!isEditing)
     setEditedContent(note.info.txt || '')
   }
 
-  const handleContentChange = (e) => {
-    setEditedContent(e.target.value)
-  }
-
+  const handleContentChange = (e) => setEditedContent(e.target.value)
   const handleSave = () => {
     updateNote(note.id, { ...note.info, txt: editedContent })
     setIsEditing(false)
@@ -75,22 +63,14 @@ export function NotePreview({ note, updateNoteColor, toggleNotePinned, deleteNot
   }
 
   const NoteComponent = componentMap[note.type]
-
-  if (!NoteComponent) {
-    return null
-  }
+  if (!NoteComponent) return null
 
   const handleEditClick = () => {
-    if (note.type === 'NoteTxt' || note.type === 'NoteTodos') {
-      setIsEditing(true)
-    }
-    
+    if (note.type === 'NoteTxt' || note.type === 'NoteTodos') setIsEditing(true)
   }
 
   const handleCanvasClick = (e) => {
-    if (note.type === 'NoteCanvas') {
-      e.stopPropagation() 
-    }
+    if (note.type === 'NoteCanvas') e.stopPropagation()
   }
 
   return (
@@ -134,37 +114,19 @@ export function NotePreview({ note, updateNoteColor, toggleNotePinned, deleteNot
       </div>
       {!isEditing && (
         <div className="note-actions">
-          <button onClick={toggleEdit}>Edit</button>
+          <button onClick={toggleEdit} title="edit"><img src="assets/img/edit.png" /></button>
           <button onClick={handlePinToggle}>
-            {note.isPinned ? (
-              <img src="assets/img/pin (1).png" alt="Unpin" />
-            ) : (
-              <img src="assets/img/pin.png" alt="Pin" />
-            )}
+            <img src={note.isPinned ? "assets/img/pin (1).png" : "assets/img/pin.png"} />
           </button>
-          <button onClick={handleDelete}>
-            <img src="assets/img/trash-solid.svg" alt="Delete" />
-          </button>
-          <button onClick={handleDuplicate}>
-            <img src="assets/img/copy-regular (1).svg" alt="Duplicate" />
-          </button>
+          <button onClick={handleDelete} title="delete"><img src="assets/img/trash-solid.svg" /></button>
+          <button onClick={handleDuplicate} title="copy"><img src="assets/img/copy-regular (1).svg" /></button>
           <div className="color-picker-container">
-            <button onClick={() => setIsColorMenuOpen(!isColorMenuOpen)}>
-              <img src="assets/img/color-wheel.png" alt="Color Wheel" />
+            <button onClick={() => setIsColorMenuOpen(!isColorMenuOpen)} title="color">
+              <img src="assets/img/color-wheel.png" />
             </button>
             {isColorMenuOpen && (
               <div className="color-menu">
-                {[
-                  '#72DC59',
-                  '#5CDBD0',
-                  '#FFCDD2',
-                  '#DBA724',
-                  '#0855DB',
-                  '#4B72DC',
-                  '#B71C1C',
-                  '#212833',
-                  '#D50000',
-                ].map((color) => (
+                {['#72DC59', '#5CDBD0', '#FFCDD2', '#DBA724', '#0855DB', '#4B72DC', '#B71C1C', '#212833', '#D50000'].map((color) => (
                   <button
                     key={color}
                     className="color-button"
