@@ -1,14 +1,11 @@
 .note-input {
-    background-color: #d4d4d4;
+    background-color: #f5f5f575;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     padding: 12px;
     display: flex;
     align-items: center;
-    /* margin-bottom: 12px; */
-    /* width: 550px; */
     height: 50px;
-    margin: auto;
     position: absolute;
     top: 150px;
     left: 400px;
@@ -21,40 +18,43 @@
     padding: 8px;
     margin-right: 8px;
     outline: none;
-    width:100% ;
-
+    width: 100%;
+    font-family: lato-reg;
 }
-input{
+
+input {
     padding: 10px;
     width: 400px;
+    font-family: lato-reg;
 }
+
 .note-input select {
     border: none;
     background-color: transparent;
-    color: #5f6368;
+    color: #1353a1;
     font-size: 14px;
     padding: 8px;
     cursor: pointer;
-    
+    font-family: lato-reg;
 }
 
 .note-input button {
-    background-color: #4caf50;
+    background-color: #1353a1;
     color: #ffffff;
     border: none;
     border-radius: 4px;
     padding: 8px 16px;
     font-size: 14px;
     cursor: pointer;
-    margin-left: 199px;
+    font-family: lato-reg;
+
 }
 
 .note-input button:hover {
-    background-color: #45a049;
+    background-color: #032c5e;
 }
 
 .note-input button:focus {
     outline: none;
-    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.5);
-    /* Green outline on focus */
+    box-shadow: 0 0 0 2px #1353a1;
 }

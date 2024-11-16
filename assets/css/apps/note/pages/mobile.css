@@ -1,55 +1,106 @@
-/* @media (max-width: 600px) {
-    .note-preview {
-      max-width: 100%;
-      height: auto;
-      margin: 5px;
-    }
-  
-    .note-img img,
-    .note-video video {
-      width: 100%;
-      height: auto;
-    }
-  
-    .note-index {
-      display: flex;
-      flex-direction: column;
-    }
-  
-    .note-index-preview {
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin: 0;
-    }
-  
-    .note-filter input {
-      width: calc(100% - 20px);
-      left: 10px;
-      top: 50px;
-    }
-  
-    .btn-filter {
-      left: calc(100% - 50px);
-      top: 60px;
-    }
-  
-    .view-button,
-    .settings-button,
-    .apps-button {
-      left: initial;
-      right: 10px;
-      top: 60px;
-      margin-left: 5px;
-    }
-  
-    .user {
-      left: initial;
-      right: 10px;
-      top: 60px;
-    }
-  } */
+@media (max-width: 1115px) {
+  .note-filter input {
+    width: 350px;
+    position: relative;
+    right: 240px;
+  }
 
+  .btn-filter {
+    right: 275px;
+  }
 
+  .view-button {
+    left: 75%;
+  }
 
+  .refresh-button {
+    left: 71%;
+  }
 
-  
+  .settings-button {
+    left: 79%;
+  }
+
+  .apps-button {
+    left: 90%;
+  }
+
+  .user {
+    left: 95%;
+  }
+
+  .note-input {
+    width: 400px;
+  }
+
+}
+
+@media (max-width: 800px) {
+  .note-filter input {
+    width: 200px;
+  }
+
+  .view-button {
+    left: 74%;
+  }
+
+  .refresh-button {
+    left: 69%;
+  }
+
+  .settings-button {
+    left: 79%;
+  }
+
+  .apps-button {
+    left: 87%;
+  }
+
+  .user {
+    left: 93%;
+  }
+}
+
+@media (max-width: 860px) {
+  .note-input {
+    margin-left: -20%;
+    width: 300px;
+
+  }
+}
+@media (max-width: 650px) {
+  .note-input {
+    width: 300px;
+    margin-left: -25%;
+  }
+}
+
+@media (max-width: 600px) {
+  .note-filter input {
+    width: 200px;
+  }
+
+  .view-button {
+    left: 74%;
+  }
+
+  .refresh-button {
+    left: 69%;
+  }
+
+  .settings-button {
+    left: 79%;
+  }
+
+  .apps-button {
+    left: 85%;
+  }
+
+  .user {
+    left: 92%;
+  }
+  .note-input {
+    width: 300px;
+    margin-left: -32%;
+  }
+}
